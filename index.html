@@ -1,0 +1,493 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Cohen Family Disney World Adventure · Sep 18–25, 2026</title>
+<meta name="description" content="Interactive itinerary, dining guide, and booking tracker for the Cohen family Walt Disney World trip, September 18-25, 2026.">
+<meta name="theme-color" content="#cfe6f7">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=Courier+Prime:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16235a; --navy-deep:#0e1a45; --blue:#23408e; --blue2:#3a63c0; --sky:#6f9be8;
+  --gold:#e7b53c; --gold-deep:#bd8e22; --gold-ink:#7a5712; --cream:#fbf6ea; --paper:#fffdf6;
+  --parchment:#f7f0dd; --kraft:#efe4c6;
+  --ink:#22305f; --muted:#5d6390; --line:#e2d8bd; --line2:#ece2c8;
+  --t-four-seasons:#2f9e93; --t-mnsshp:#7a3fb0; --t-epcot:#c14f8a;
+  --t-animal-kingdom:#4b9b54; --t-princess:#d45a93; --t-hollywood:#d24b4b;
+  --t-departure:#6b76a6;
+  --serif:'Cinzel','Cinzel Decorative',Georgia,serif;
+  --display:'Cinzel Decorative','Cinzel',Georgia,serif;
+  --sans:'Quicksand',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'Courier Prime',ui-monospace,'Cascadia Code',Menlo,monospace;
+  --r:16px; --r-sm:12px; --r-xs:10px;
+  --sh-xs:0 1px 3px rgba(34,48,95,.07);
+  --sh-sm:0 4px 12px rgba(34,48,95,.08);
+  --sh:0 12px 28px rgba(34,48,95,.12);
+  --sh-lg:0 20px 46px rgba(34,48,95,.18);
+  --maxw:1000px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);
+  background:
+    repeating-linear-gradient(0deg,rgba(34,48,95,.022) 0 1px,transparent 1px 30px),
+    radial-gradient(1000px 520px at 82% -120px,#d4e8f8 0%,rgba(212,232,248,0) 58%),
+    linear-gradient(180deg,#dcecfb 0%,var(--cream) 24%,var(--cream) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;line-height:1.55;letter-spacing:.005em}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.chip:focus-visible,.tab:focus-visible{outline-color:var(--gold-deep)}
+
+/* ============ HERO (daytime) ============ */
+.hero{position:relative;overflow:hidden;color:var(--navy);text-align:center;isolation:isolate;
+  background:
+    radial-gradient(360px 360px at 85% -30px,rgba(255,222,140,.95) 0%,rgba(255,222,140,0) 62%),
+    linear-gradient(180deg,#a9d2f3 0%,#c4e0f5 40%,#e3eff1 76%,var(--cream) 100%);
+  padding:clamp(54px,6vw,58px) 18px 150px}
+.hero-sky{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.sun{position:absolute;right:7%;top:26px;width:74px;height:74px;border-radius:50%;
+  background:radial-gradient(circle,#fff2c4 0%,#ffd86a 55%,#f3c24b 100%);
+  box-shadow:0 0 40px 14px rgba(255,214,100,.55)}
+.cloud{position:absolute;background:#fff;border-radius:60px;opacity:.92;filter:blur(.3px);
+  box-shadow:36px 6px 0 -6px #fff,-34px 8px 0 -8px #fff,0 0 24px rgba(255,255,255,.6)}
+.cloud.c1{width:90px;height:26px;left:12%;top:18%;animation:drift 26s linear infinite}
+.cloud.c2{width:64px;height:20px;left:64%;top:30%;opacity:.8;animation:drift 34s linear infinite}
+.cloud.c3{width:74px;height:22px;left:40%;top:13%;opacity:.85;animation:drift 30s linear infinite reverse}
+@keyframes drift{0%{transform:translateX(-12px)}50%{transform:translateX(12px)}100%{transform:translateX(-12px)}}
+.vtag{position:absolute;right:14px;top:14px;font-family:var(--sans);font-size:11px;font-weight:700;color:var(--navy);
+  border:1px solid var(--gold-deep);background:rgba(255,255,255,.72);padding:4px 11px;border-radius:20px;
+  text-transform:uppercase;letter-spacing:.06em;z-index:2}
+.hero-content{position:relative;max-width:780px;margin:0 auto}
+.eyebrow{font-family:var(--mono);letter-spacing:.3em;text-transform:uppercase;font-size:12px;color:var(--gold-ink);
+  font-weight:700;margin:0 0 12px}
+.eyebrow::before,.eyebrow::after{content:"\2708";margin:0 .8em;color:var(--gold-deep);font-size:12px;font-family:var(--sans)}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(31px,6.4vw,60px);margin:0;
+  color:var(--navy);text-shadow:0 2px 12px rgba(255,255,255,.5);line-height:1.04;letter-spacing:.01em}
+.hero h1 .gold{color:var(--gold-deep)}
+.hero .dates{margin:16px 0 2px;font-size:clamp(16px,2.5vw,21px);font-weight:700;color:var(--blue);letter-spacing:.02em}
+.hero .dates-sub{margin:3px 0 0;font-size:clamp(13px,2vw,15.5px);font-weight:600;color:#3d4a7e}
+.hero .fam{margin:14px auto 0;font-size:13.5px;color:#46507f;max-width:560px;line-height:1.5;font-weight:500}
+.hero .fam-sep{color:var(--gold-deep);margin:0 7px}
+.hero-scene{position:absolute;left:0;right:0;bottom:14px;width:100%;height:auto;z-index:-1;display:block}
+.hero-bunting{position:absolute;left:0;right:0;bottom:0;display:block;filter:drop-shadow(0 2px 3px rgba(0,0,0,.14))}
+
+/* ============ NAV — ticket strip ============ */
+nav.tabs{position:sticky;top:0;z-index:40;background:rgba(255,253,246,.93);backdrop-filter:blur(10px) saturate(1.1);
+  border-bottom:2px dashed var(--line);box-shadow:0 4px 16px rgba(34,48,95,.06)}
+.tabs-inner{display:flex;gap:0;max-width:var(--maxw);margin:0 auto;padding:8px 12px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;display:flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--muted);
+  font:inherit;font-weight:700;font-size:14px;padding:9px 17px;border-radius:9px;cursor:pointer;white-space:nowrap;
+  position:relative;transition:background .18s,color .18s,transform .12s}
+.tab + .tab::before{content:"";position:absolute;left:-1px;top:18%;bottom:18%;border-left:2px dotted var(--line)}
+.tab-ico{font-size:15px;line-height:1}
+.tab:hover{color:var(--blue);background:#eef3fc}
+.tab:active{transform:scale(.96)}
+.tab.active{color:#3a2c05;background:linear-gradient(135deg,#f5d77e,var(--gold));
+  box-shadow:0 5px 13px rgba(231,181,60,.4)}
+.tab.active::before,.tab.active + .tab::before{border-color:transparent}
+
+main{padding:28px 0 70px;position:relative}
+.view{display:none;animation:fade .38s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.sec-h{font-family:var(--display);color:var(--navy);font-size:clamp(24px,4.4vw,34px);
+  margin:0 0 16px;position:relative;padding-bottom:13px;letter-spacing:.01em}
+.sec-h::after{content:"";position:absolute;left:0;bottom:0;width:100%;max-width:340px;height:0;
+  border-bottom:3px dashed var(--gold-deep)}
+.sec-h::before{content:"\2605";position:absolute;left:0;bottom:-9px;background:var(--cream);padding-right:8px;color:var(--gold);font-size:15px}
+.sub-h{font-family:var(--serif);font-weight:600;color:var(--blue);font-size:21px;margin:32px 0 8px;letter-spacing:.01em}
+.hint{color:var(--muted);font-size:14px;margin:4px 0 18px}
+.hint b{color:var(--ink)}
+
+/* countdowns — luggage tags */
+.countdowns{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 26px}
+.cd{position:relative;background:var(--paper);border:1px solid var(--line);padding:22px 12px 16px;text-align:center;
+  box-shadow:var(--sh-sm);clip-path:polygon(20px 0,100% 0,100% 100%,0 100%,0 20px);transition:transform .15s,box-shadow .15s}
+.cd::before{content:"";position:absolute;top:11px;left:11px;width:11px;height:11px;border-radius:50%;
+  background:var(--cream);box-shadow:inset 0 0 0 2px var(--gold-deep);transform:rotate(0)}
+.cd:hover{transform:translateY(-3px);box-shadow:var(--sh)}
+.cd-num{font-family:var(--serif);font-size:clamp(30px,7vw,46px);font-weight:700;color:var(--blue);line-height:1}
+.cd-unit{font-family:var(--sans);font-size:12.5px;font-weight:700;color:var(--muted);margin-left:5px;letter-spacing:.01em}
+.cd-lab{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.4}
+.cd-lab b{display:block;color:var(--ink);font-size:13px;margin-bottom:2px}
+.cd-lab span{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--muted)}
+.cd:nth-child(3){background:linear-gradient(180deg,#fff7e3,#fffdf6)}
+.cd:nth-child(3) .cd-num{color:var(--gold-deep)}
+.cd-head{margin:18px 0 8px}
+
+/* info cards */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.info-card{display:flex;gap:13px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r);padding:15px 16px;box-shadow:var(--sh-xs);transition:transform .15s,box-shadow .15s}
+.info-card:hover{transform:translateY(-2px);box-shadow:var(--sh-sm)}
+.info-ico{font-size:20px;flex:0 0 auto;width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+  background:var(--parchment);border:1px solid var(--line);border-radius:11px}
+.info-t{font-weight:700;color:var(--navy);font-size:14px;margin-bottom:2px}
+.info-d{font-size:13.5px;color:var(--muted);line-height:1.45}
+
+/* week grid — ticket stubs */
+.wk-grid{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.wk-row{position:relative;display:grid;grid-template-columns:64px 80px 1fr;gap:10px;align-items:center;text-decoration:none;
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 16px 13px 76px;
+  transition:transform .16s,box-shadow .16s;cursor:pointer;overflow:hidden}
+.wk-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:60px;background:var(--sky);
+  opacity:.16}
+.wk-row::after{content:"";position:absolute;left:60px;top:6px;bottom:6px;border-left:2px dashed var(--line)}
+.wk-row:hover{transform:translateX(4px);box-shadow:var(--sh)}
+.wk-day{position:absolute;left:0;width:60px;text-align:center;font-family:var(--serif);font-weight:700;
+  color:var(--blue);font-size:13px}
+.wk-date{font-family:var(--mono);font-weight:700;font-size:12px;color:var(--ink)}
+.wk-hl{font-size:14px;color:var(--ink);font-weight:600}
+.wk-meal{display:none;font-size:12.5px;color:var(--muted)}
+.wk-row.four-seasons::before{background:var(--t-four-seasons)} .wk-row.four-seasons .wk-day{color:var(--t-four-seasons)}
+.wk-row.mnsshp::before{background:var(--t-mnsshp)} .wk-row.mnsshp .wk-day{color:var(--t-mnsshp)}
+.wk-row.epcot::before{background:var(--t-epcot)} .wk-row.epcot .wk-day{color:var(--t-epcot)}
+.wk-row.animal-kingdom::before{background:var(--t-animal-kingdom)} .wk-row.animal-kingdom .wk-day{color:var(--t-animal-kingdom)}
+.wk-row.princess::before{background:var(--t-princess)} .wk-row.princess .wk-day{color:var(--t-princess)}
+.wk-row.hollywood::before{background:var(--t-hollywood)} .wk-row.hollywood .wk-day{color:var(--t-hollywood)}
+.wk-row.departure::before{background:var(--t-departure)} .wk-row.departure .wk-day{color:var(--t-departure)}
+.legend{margin-top:20px;font-size:13px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:12px;padding:12px 14px}
+
+/* day cards — boarding passes */
+.day-tools{display:flex;gap:9px;margin-bottom:16px}
+.tool-btn{border:1.5px dashed var(--line);background:var(--paper);color:var(--blue);font:inherit;font-weight:700;
+  font-size:13px;padding:8px 16px;border-radius:10px;cursor:pointer;box-shadow:var(--sh-xs);transition:.15s}
+.tool-btn:hover{background:#eef3fc;border-color:var(--sky)}
+.tool-btn:active{transform:scale(.97)}
+.day-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px 18px 8px;margin-bottom:20px;box-shadow:var(--sh-sm);scroll-margin-top:90px;overflow:visible;
+  transition:box-shadow .18s}
+.day-card::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;border-radius:var(--r) var(--r) 0 0;background:var(--sky)}
+.day-card:hover{box-shadow:var(--sh)}
+.day-top{display:flex;gap:16px;align-items:flex-start;padding-top:8px}
+.day-badge{flex:0 0 auto;width:64px;height:64px;border-radius:50%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;font-size:9px;color:#fff;background:var(--sky);text-transform:uppercase;
+  letter-spacing:.12em;line-height:1;transform:rotate(-7deg);box-shadow:0 5px 13px rgba(34,48,95,.2);position:relative}
+.day-badge::before{content:"";position:absolute;inset:4px;border:1.5px dashed rgba(255,255,255,.6);border-radius:50%}
+.day-badge b{display:block;font-family:var(--serif);font-size:23px;margin-top:2px;letter-spacing:0}
+.day-meta{padding-top:3px}
+.day-date{font-family:var(--mono);font-weight:700;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.day-title{font-family:var(--serif);color:var(--navy);font-size:clamp(17px,3vw,21px);font-weight:700;line-height:1.22;margin:3px 0 6px}
+.day-tag{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;background:var(--sky);
+  padding:3px 11px;border-radius:6px;letter-spacing:.04em;text-transform:uppercase}
+.day-head{color:#454d7c;font-size:14.5px;margin:13px 2px 4px;line-height:1.5}
+.day-details{border-top:2px dashed var(--line);margin-top:12px;position:relative}
+.day-details::before{content:"";position:absolute;left:-11px;top:-11px;width:20px;height:20px;border-radius:50%;
+  background:var(--cream);box-shadow:inset -1px 0 0 var(--line)}
+.day-details::after{content:"";position:absolute;right:-11px;top:-11px;width:20px;height:20px;border-radius:50%;
+  background:var(--cream);box-shadow:inset 1px 0 0 var(--line)}
+.day-details summary{list-style:none;cursor:pointer;padding:13px 2px 11px;color:var(--blue);font-weight:700;font-size:13px;
+  user-select:none;display:flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.04em;font-family:var(--mono);transition:color .15s}
+.day-details summary:hover{color:var(--navy)}
+.day-details summary::-webkit-details-marker{display:none}
+.sum-open,.sum-close{display:inline}
+.day-details .sum-close{display:none}
+.day-details[open] .sum-open{display:none}
+.day-details[open] .sum-close{display:inline}
+.chev{flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--parchment);border:1px solid var(--line);
+  color:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-size:13px;
+  transition:transform .28s ease,background .15s;font-family:var(--sans)}
+.day-details[open] .chev{transform:rotate(90deg);background:#dbe6ff}
+.timeline{position:relative;padding:4px 0 14px 4px}
+.blk{display:flex;gap:14px;padding:13px 0;border-top:1px dashed var(--line2)}
+.blk:first-child{border-top:0}
+.blk-time{flex:0 0 96px;font-family:var(--mono);font-weight:700;color:var(--blue);font-size:12px;padding-top:3px;
+  position:relative;padding-left:18px;letter-spacing:0;text-transform:uppercase}
+.blk-time::before{content:"";position:absolute;left:0;top:5px;width:9px;height:9px;border-radius:50%;
+  background:var(--paper);border:2.5px solid var(--sky);box-shadow:0 0 0 3px rgba(111,155,232,.14)}
+.blk-time::after{content:"";position:absolute;left:4px;top:18px;bottom:-20px;width:2px;background:var(--line2)}
+.blk:last-child .blk-time::after{display:none}
+.blk-body{flex:1;min-width:0}
+.blk-head{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline}
+.blk-title{font-weight:700;color:var(--ink);font-size:15px}
+.blk-tag{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--gold-ink);background:#fdf3d6;
+  border:1px solid #f0dca0;padding:2px 9px;border-radius:5px;white-space:nowrap;text-transform:uppercase;letter-spacing:.02em}
+.blk-desc{font-size:14px;color:#454c78;margin:4px 0 0;line-height:1.5}
+.blk-desc b{color:var(--ink)} .blk-desc i{color:var(--muted)}
+
+/* per-park accents */
+.day-card.four-seasons::before{background:var(--t-four-seasons)} .four-seasons .day-badge,.four-seasons .day-tag{background:var(--t-four-seasons)} .four-seasons .blk-time{color:var(--t-four-seasons)} .four-seasons .blk-time::before{border-color:var(--t-four-seasons);box-shadow:0 0 0 3px rgba(47,158,147,.14)} .four-seasons .day-title,.four-seasons .day-details summary{color:var(--t-four-seasons)}
+.day-card.mnsshp::before{background:var(--t-mnsshp)} .mnsshp .day-badge,.mnsshp .day-tag{background:var(--t-mnsshp)} .mnsshp .blk-time{color:var(--t-mnsshp)} .mnsshp .blk-time::before{border-color:var(--t-mnsshp);box-shadow:0 0 0 3px rgba(122,63,176,.14)} .mnsshp .day-title,.mnsshp .day-details summary{color:var(--t-mnsshp)}
+.day-card.epcot::before{background:var(--t-epcot)} .epcot .day-badge,.epcot .day-tag{background:var(--t-epcot)} .epcot .blk-time{color:var(--t-epcot)} .epcot .blk-time::before{border-color:var(--t-epcot);box-shadow:0 0 0 3px rgba(193,79,138,.14)} .epcot .day-title,.epcot .day-details summary{color:var(--t-epcot)}
+.day-card.animal-kingdom::before{background:var(--t-animal-kingdom)} .animal-kingdom .day-badge,.animal-kingdom .day-tag{background:var(--t-animal-kingdom)} .animal-kingdom .blk-time{color:var(--t-animal-kingdom)} .animal-kingdom .blk-time::before{border-color:var(--t-animal-kingdom);box-shadow:0 0 0 3px rgba(75,155,84,.14)} .animal-kingdom .day-title,.animal-kingdom .day-details summary{color:var(--t-animal-kingdom)}
+.day-card.princess{background:linear-gradient(180deg,#fffafc,var(--paper))} .day-card.princess::before{background:var(--t-princess)} .princess .day-badge,.princess .day-tag{background:var(--t-princess)} .princess .blk-time{color:var(--t-princess)} .princess .blk-time::before{border-color:var(--t-princess);box-shadow:0 0 0 3px rgba(212,90,147,.14)} .princess .day-title,.princess .day-details summary{color:var(--t-princess)}
+.day-card.hollywood::before{background:var(--t-hollywood)} .hollywood .day-badge,.hollywood .day-tag{background:var(--t-hollywood)} .hollywood .blk-time{color:var(--t-hollywood)} .hollywood .blk-time::before{border-color:var(--t-hollywood);box-shadow:0 0 0 3px rgba(210,75,75,.14)} .hollywood .day-title,.hollywood .day-details summary{color:var(--t-hollywood)}
+.day-card.departure::before{background:var(--t-departure)} .departure .day-badge,.departure .day-tag{background:var(--t-departure)} .departure .blk-time{color:var(--t-departure)} .departure .blk-time::before{border-color:var(--t-departure);box-shadow:0 0 0 3px rgba(107,118,166,.14)} .departure .day-title,.departure .day-details summary{color:var(--t-departure)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:4px;text-decoration:none;font-size:12.5px;font-weight:700;
+  padding:6px 12px;border-radius:7px;border:1px solid var(--line);transition:.15s;white-space:nowrap}
+.chip:hover{transform:translateY(-1px);box-shadow:var(--sh-xs)}
+.chip.map{background:#eafaf4;color:#157a64;border-color:#bfe9da}
+.chip.map:hover{background:#d8f3e8}
+.chip.disney{background:#eaf0ff;color:#23449e;border-color:#c7d6f7}
+.chip.disney:hover{background:#dbe6ff}
+.chip.ext{background:#f4f1ff;color:#553f9e;border-color:#ddd4f5}
+.chip.ext:hover{background:#ebe5fb}
+
+/* tier badges */
+.tier{display:inline-flex;align-items:center;justify-content:center;min-width:21px;height:18px;
+  font-weight:800;font-size:11px;color:#fff;border-radius:5px;padding:0 6px;vertical-align:middle}
+.tier-S{background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#3a2c05}
+.tier-A{background:var(--blue)} .tier-B{background:#18756b} .tier-C{background:#5d6596}
+.tier-none{background:#e2e7f3;color:#565c86}
+
+/* dining — reservation passes */
+.tierkey{font-size:12.5px;color:var(--muted);margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.dine-list{display:flex;flex-direction:column;gap:10px}
+.dine-day{font-family:var(--mono);font-weight:700;color:var(--blue);margin:20px 0 4px;font-size:13px;
+  text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:10px}
+.dine-day::after{content:"";flex:1;border-top:2px dotted var(--line)}
+.dine-card{position:relative;display:flex;gap:14px;align-items:stretch;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-sm);padding:14px 15px;box-shadow:var(--sh-xs);overflow:visible;transition:transform .15s,box-shadow .15s}
+.dine-card:hover{transform:translateY(-2px);box-shadow:var(--sh-sm)}
+.dine-card.star{border-color:#ecd49a;background:linear-gradient(180deg,#fffdf4,var(--paper))}
+.dine-card.star::after{content:"\2605";position:absolute;top:-8px;left:-7px;width:22px;height:22px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));color:#3a2c05;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:11px;box-shadow:var(--sh-xs);z-index:2}
+.dine-card.done{border-color:#bfe9da;background:linear-gradient(180deg,#f7fcfa,var(--paper))}
+.dine-time{flex:0 0 60px;font-family:var(--mono);font-weight:700;color:var(--blue);font-size:12.5px;
+  display:flex;align-items:center;text-align:left;border-right:2px dashed var(--line);padding-right:13px}
+.dine-main{flex:1;min-width:0}
+.dine-name{font-weight:700;color:var(--ink);font-size:15px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.dine-loc{font-size:12.5px;color:var(--muted);margin-top:2px}
+.dine-note{font-size:13px;color:#4a517a;margin:3px 0 0}
+.dine-prio{flex:0 0 auto;align-self:center;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--muted);
+  text-align:right;max-width:94px;text-transform:uppercase;letter-spacing:.02em;line-height:1.4}
+.dine-prio.star{color:var(--gold-ink)}
+.dine-prio.done{color:#1d7d68}
+
+/* rider swap */
+.r-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.r-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 6px;
+  box-shadow:var(--sh-sm);position:relative;overflow:hidden;transition:box-shadow .15s}
+.r-card::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--sky)}
+.r-card:hover{box-shadow:var(--sh)}
+.r-card.epcot::before{background:var(--t-epcot)} .r-card.animal-kingdom::before{background:var(--t-animal-kingdom)}
+.r-card.princess::before{background:var(--t-princess)} .r-card.hollywood::before{background:var(--t-hollywood)}
+.r-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;padding-top:6px}
+.r-head b{font-family:var(--serif);color:var(--navy);font-size:16px}
+.r-head span{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:700}
+.r-rows{display:flex;flex-direction:column}
+.r-row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 0;border-top:1px dashed var(--line2)}
+.r-name{font-weight:700;font-size:13.5px;color:var(--ink)}
+.r-h{font-family:var(--mono);font-weight:700;color:var(--blue);font-size:13px;text-align:right}
+.r-swap{font-size:12px;color:var(--muted)}
+.cok{font-size:11px;font-weight:800;color:#157a64;text-align:right}
+.cno{font-size:11px;font-weight:600;color:#8a7e5e;text-align:right}
+
+/* booking — big boarding pass */
+.book-banner{position:relative;display:flex;align-items:center;gap:18px;flex-wrap:wrap;overflow:visible;
+  background:linear-gradient(135deg,#fffdf6,#fbf3da);border:1.5px solid var(--line);color:var(--navy);
+  border-radius:var(--r);padding:20px 24px;margin-bottom:26px;box-shadow:var(--sh)}
+.book-banner::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;border-radius:var(--r) var(--r) 0 0;
+  background:linear-gradient(90deg,var(--gold),var(--gold-deep))}
+.bb-num{font-family:var(--serif);font-size:54px;font-weight:700;color:var(--gold-deep);line-height:.85;margin-top:6px}
+.book-banner b{color:var(--navy)} .bb-sub{font-family:var(--mono);font-size:12px;color:var(--muted);display:block;margin-top:4px}
+.bb-cta{position:relative;margin-left:auto;background:linear-gradient(135deg,var(--blue2),var(--blue));color:#fff;
+  font-weight:800;text-decoration:none;padding:12px 18px;border-radius:10px;font-size:13.5px;white-space:nowrap;
+  box-shadow:0 6px 16px rgba(35,64,142,.32);transition:.15s}
+.bb-cta::before{content:"";position:absolute;left:-13px;top:-20px;bottom:-20px;border-left:2px dashed var(--line)}
+.bb-cta:hover{transform:translateY(-2px);box-shadow:0 9px 20px rgba(35,64,142,.42)}
+.bk-list{display:flex;flex-direction:column;gap:10px}
+.bk-item{position:relative;display:grid;grid-template-columns:160px 1fr;gap:12px;background:var(--paper);
+  border:1px solid var(--line);border-left:6px solid var(--sky);border-radius:var(--r-sm);padding:13px 16px;box-shadow:var(--sh-xs)}
+.bk-item.done{border-left-color:#3aa17e;background:linear-gradient(180deg,#f6fcf9,var(--paper))}
+.bk-item.soon{border-left-color:var(--gold);background:linear-gradient(180deg,#fffdf3,var(--paper))}
+.bk-item.now{border-left-color:var(--blue2)}
+.bk-item.future{border-left-color:#aab2d4}
+.bk-when{font-family:var(--mono);font-weight:700;font-size:12.5px;color:var(--navy)}
+.bk-item.done .bk-when{color:#2c8a68} .bk-item.soon .bk-when{color:var(--gold-ink)} .bk-item.now .bk-when{color:var(--blue)}
+.bk-label{font-weight:700;color:var(--ink);font-size:14px}
+.bk-detail{font-size:13px;color:var(--muted);margin-top:2px;line-height:1.45}
+
+/* checklist — passport stamps */
+.ck-bar{height:9px;border-radius:6px;background:var(--parchment);border:1px solid var(--line);overflow:hidden;margin:2px 0 16px}
+.ck-bar-fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--t-animal-kingdom),#5cb86a);transition:width .5s cubic-bezier(.4,0,.2,1)}
+.ck-list{display:flex;flex-direction:column;gap:8px}
+.ck{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-xs);
+  padding:12px 14px;cursor:pointer;transition:.15s}
+.ck:hover{border-color:var(--sky);box-shadow:var(--sh-xs)}
+.ck input{position:absolute;opacity:0;width:0;height:0}
+.ck-box{flex:0 0 auto;width:24px;height:24px;border:2px dashed var(--sky);border-radius:50%;position:relative;transition:.18s}
+.ck input:checked + .ck-box{background:var(--t-animal-kingdom);border-style:solid;border-color:var(--t-animal-kingdom);transform:rotate(-8deg) scale(1.05)}
+.ck input:checked + .ck-box::after{content:"\2713";position:absolute;inset:0;color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.ck input:focus-visible + .ck-box{outline:3px solid var(--blue);outline-offset:2px}
+.ck-num{flex:0 0 auto;width:23px;height:23px;border-radius:50%;background:var(--parchment);border:1px solid var(--line);
+  color:var(--blue);font-family:var(--mono);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+.ck-main{flex:1;font-size:14px;transition:opacity .2s}
+.ck-meta{display:block;font-size:12.5px;color:var(--muted);font-weight:500}
+.ck input:checked ~ .ck-main{opacity:.5;text-decoration:line-through}
+.ck input:checked ~ .ck-num{background:var(--t-animal-kingdom);border-color:var(--t-animal-kingdom);color:#fff}
+#ck-progress{font-family:var(--mono);font-weight:700;color:var(--blue)}
+.ll-note{margin-top:20px;background:linear-gradient(135deg,#eef3fc,#e6eefb);border:1px solid #c7d6f7;
+  border-radius:var(--r-sm);padding:15px 17px;font-size:14px;line-height:1.5}
+
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:30px 18px 44px;line-height:1.6}
+footer .heart{color:var(--t-princess)}
+
+/* sparkle particles */
+.spark{position:fixed;width:7px;height:7px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;
+  box-shadow:0 0 8px 2px rgba(231,181,60,.7);transform:translate(-50%,-50%);animation:spark .62s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:translate(-50%,-50%) translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(var(--tx,0),var(--ty,0)) scale(.2)}}
+
+/* ============ RESPONSIVE ============ */
+@media(min-width:560px){.wk-meal{display:block}.wk-row{grid-template-columns:80px 1fr 1.15fr;padding-left:76px}}
+@media(max-width:680px){
+  .countdowns{gap:10px} .info-grid{grid-template-columns:1fr} .r-grid{grid-template-columns:1fr}
+  .wk-row{grid-template-columns:1fr} .wk-date{display:none}
+  .bk-item{grid-template-columns:1fr;gap:4px} .bk-when{font-size:12px}
+  .blk-time{flex-basis:80px;font-size:11px} .dine-prio{display:none}
+  .book-banner{gap:12px;padding:18px} .bb-cta{margin-left:0;width:100%;text-align:center}
+  .bb-cta::before{display:none} .bb-num{font-size:46px}
+
+  body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+  nav.tabs{position:fixed;top:auto;bottom:0;left:0;right:0;border-top:2px dashed var(--line);border-bottom:0;
+    box-shadow:0 -4px 16px rgba(34,48,95,.1);background:rgba(255,253,246,.97);padding-bottom:env(safe-area-inset-bottom)}
+  .tabs-inner{padding:7px 6px;gap:2px;justify-content:space-around;overflow:visible}
+  .tab{flex:1 1 0;flex-direction:column;gap:3px;padding:7px 2px;border-radius:12px;font-size:10.5px;min-width:0}
+  .tab + .tab::before{display:none}
+  .tab-ico{font-size:21px}
+  .tab:hover{background:transparent;color:var(--muted)}
+  .tab.active{background:transparent;color:var(--gold-ink);box-shadow:none}
+  .tab.active .tab-ico{transform:translateY(-1px);filter:drop-shadow(0 3px 5px rgba(189,142,34,.4))}
+}
+@media(max-width:380px){.tab-lab{font-size:9.5px}.tab-ico{font-size:19px}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+  html{scroll-behavior:auto}
+}
+@media print{
+  nav.tabs,.day-tools,.bb-cta,.hero-bunting,.cloud{display:none!important}
+  body{padding-bottom:0;background:#fff}
+  .view{display:block!important;animation:none}
+  .day-card,.dine-card,.r-card,.bk-item,.cd{box-shadow:none;break-inside:avoid}
+  .hero{padding-bottom:40px}
+}
+</style></head><body><header class="hero"><div class="hero-sky"><div class="sun"></div><span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span></div>
+<span class="vtag">Itinerary v6 · May 2026</span>
+<div class="hero-content"><p class="eyebrow">The Cohen Family</p><h1>Disney World <span class="gold">Adventure</span></h1><p class="dates">September 18 – 25, 2026</p><p class="dates-sub">Four Seasons &amp; Disney's Grand Floridian</p><p class="fam">Brett · Ashley · Casper (4) · Eve (2) <span class="fam-sep">|</span> Grandma Barbara &amp; Grandpa Andy (Sep 21–25)</p></div>
+<svg class="hero-scene" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<!-- balloons -->
+<g>
+<g transform="translate(150,86)"><ellipse cx="0" cy="0" rx="26" ry="31" fill="#2f9e93"/><path d="M-26,0 A26,31 0 0 1 26,0 Z" fill="#2f9e93"/><path d="M0,-31 V31 M-13,-28 Q-19,0 -7,30 M13,-28 Q19,0 7,30" stroke="#1f7d73" stroke-width="1.3" fill="none" opacity=".6"/><path d="M-8,28 L-3,40 M8,28 L3,40" stroke="#7a5712" stroke-width="1"/><rect x="-5" y="40" width="10" height="8" rx="1.5" fill="#9a7b3a"/></g>
+<g transform="translate(1046,70) scale(.92)"><ellipse cx="0" cy="0" rx="24" ry="29" fill="#d45a93"/><path d="M0,-29 V29 M-12,-26 Q-17,0 -6,28 M12,-26 Q17,0 6,28" stroke="#b23d76" stroke-width="1.3" fill="none" opacity=".6"/><path d="M-7,26 L-3,38 M7,26 L3,38" stroke="#7a5712" stroke-width="1"/><rect x="-5" y="38" width="9" height="7" rx="1.5" fill="#9a7b3a"/></g>
+<g transform="translate(322,52) scale(.74)"><ellipse cx="0" cy="0" rx="24" ry="29" fill="#e7b53c"/><path d="M0,-29 V29 M-12,-26 Q-17,0 -6,28 M12,-26 Q17,0 6,28" stroke="#bd8e22" stroke-width="1.3" fill="none" opacity=".6"/><path d="M-7,26 L-3,38 M7,26 L3,38" stroke="#7a5712" stroke-width="1"/><rect x="-5" y="38" width="9" height="7" rx="1.5" fill="#9a7b3a"/></g>
+</g>
+<!-- hills -->
+<path d="M0,236 Q230,196 470,224 T940,216 T1200,222 L1200,300 L0,300 Z" fill="#9fcf8f"/>
+<path d="M0,262 Q300,232 620,256 T1200,250 L1200,300 L0,300 Z" fill="#7bbd74"/>
+<!-- castle, daytime -->
+<g transform="translate(600,0)">
+<g fill="#dde6f5"><rect x="-150" y="178" width="20" height="92"/><rect x="130" y="178" width="20" height="92"/><rect x="-104" y="150" width="32" height="120"/><rect x="72" y="150" width="32" height="120"/><rect x="-58" y="166" width="116" height="104"/><rect x="-24" y="92" width="48" height="178"/></g>
+<g fill="#c4d2ec"><rect x="0" y="92" width="24" height="178"/><rect x="88" y="150" width="16" height="120"/><rect x="124" y="178" width="26" height="92"/><rect x="8" y="166" width="50" height="104"/></g>
+<g fill="#3a63c0"><polygon points="-154,178 -140,146 -126,178"/><polygon points="126,178 140,146 154,178"/><polygon points="-108,150 -88,108 -68,150"/><polygon points="68,150 88,108 108,150"/><polygon points="-28,92 0,40 28,92"/><polygon points="-62,166 0,124 62,166"/></g>
+<g fill="#2c4f9e"><polygon points="0,40 28,92 0,92"/><polygon points="88,108 108,150 88,150"/><polygon points="140,146 154,178 140,178"/></g>
+<!-- crenellations on gatehouse -->
+<g fill="#dde6f5"><rect x="-58" y="160" width="9" height="8"/><rect x="-40" y="160" width="9" height="8"/><rect x="-22" y="160" width="9" height="8"/><rect x="13" y="160" width="9" height="8"/><rect x="31" y="160" width="9" height="8"/><rect x="49" y="160" width="9" height="8"/></g>
+<!-- flag poles + gold pennants -->
+<g stroke="#9a7b3a" stroke-width="2"><line x1="-140" y1="146" x2="-140" y2="130"/><line x1="140" y1="146" x2="140" y2="130"/><line x1="-88" y1="108" x2="-88" y2="86"/><line x1="88" y1="108" x2="88" y2="86"/><line x1="0" y1="40" x2="0" y2="14"/></g>
+<g fill="#e7b53c"><polygon points="-140,130 -122,135 -140,140"/><polygon points="140,130 158,135 140,140"/><polygon points="-88,86 -68,92 -88,98"/><polygon points="88,86 108,92 88,98"/><polygon points="0,14 22,20 0,26"/><circle cx="0" cy="12" r="3"/></g>
+<!-- windows + door -->
+<g fill="#3a63c0"><rect x="-5" y="116" width="10" height="22" rx="5"/><rect x="-92" y="172" width="8" height="14" rx="4"/><rect x="80" y="172" width="8" height="14" rx="4"/><rect x="-138" y="196" width="7" height="12" rx="3.5"/><rect x="131" y="196" width="7" height="12" rx="3.5"/></g>
+<path d="M-16,270 -16,210 A16,18 0 0 1 16,210 L16,270 Z" fill="#2c4f9e"/>
+<rect x="-2" y="210" width="4" height="60" fill="#dde6f5" opacity=".5"/>
+<!-- bunting swag across gate -->
+<path d="M-58,168 Q0,196 58,168" fill="none" stroke="#e7b53c" stroke-width="2"/>
+</g>
+<!-- foreground hill -->
+<path d="M0,282 Q280,260 600,278 T1200,272 L1200,300 L0,300 Z" fill="#5fae5c"/>
+</svg>
+<svg class="hero-bunting" width="100%" height="17" aria-hidden="true"><defs><pattern id="bunt" width="42" height="17" patternUnits="userSpaceOnUse"><path d="M0,1 Q21,8 42,1" fill="none" stroke="rgba(189,142,34,.6)" stroke-width="1.4"/><polygon points="3,2 19,2 11,15" fill="#e7b53c"/><polygon points="23,3 37,3 30,15" fill="#3a63c0"/></pattern></defs><rect x="0" y="0" width="100%" height="17" fill="url(#bunt)"/></svg></header><nav class="tabs" aria-label="Sections"><div class="tabs-inner" role="tablist"><button class="tab active" data-target="overview" type="button"><span class="tab-ico" aria-hidden="true">✦</span><span class="tab-lab">Overview</span></button><button class="tab" data-target="daily" type="button"><span class="tab-ico" aria-hidden="true">📅</span><span class="tab-lab">Daily</span></button><button class="tab" data-target="dining" type="button"><span class="tab-ico" aria-hidden="true">🍽️</span><span class="tab-lab">Dining</span></button><button class="tab" data-target="rider" type="button"><span class="tab-ico" aria-hidden="true">🎢</span><span class="tab-lab">Rider Swap</span></button><button class="tab" data-target="booking" type="button"><span class="tab-ico" aria-hidden="true">✅</span><span class="tab-lab">Booking</span></button></div></nav><main><div class="wrap"><section id="overview" class="view"><h2 class="sec-h">Trip Overview</h2><h3 class="sub-h cd-head">✨ Countdown</h3><div class="countdowns"><div class="cd"><div class="cd-num"><span id="cd-book">–</span><span class="cd-unit">days</span></div><div class="cd-lab"><b>Until dining booking</b><span>Jul 22 · 6 AM ET</span></div></div><div class="cd"><div class="cd-num"><span id="cd-ll">–</span><span class="cd-unit">days</span></div><div class="cd-lab"><b>Until Lightning Lane</b><span>Sep 11 · 7 AM ET</span></div></div><div class="cd"><div class="cd-num"><span id="cd-trip">–</span><span class="cd-unit">days</span></div><div class="cd-lab"><b>Until the trip!</b><span>Sep 18, 2026</span></div></div></div><div class="info-grid"><div class="info-card"><div class="info-ico">📅</div><div><div class="info-t">Dates</div><div class="info-d">Fri Sep 18 – Fri Sep 25, 2026 · 7 nights</div></div></div><div class="info-card"><div class="info-ico">👨‍👩‍👧‍👦</div><div><div class="info-t">Travelers</div><div class="info-d">Brett, Ashley, Casper (4), Eve (2) · Grandma Barbara &amp; Grandpa Andy (Sep 21–25)</div></div></div><div class="info-card"><div class="info-ico">🏰</div><div><div class="info-t">Resorts</div><div class="info-d">Four Seasons Orlando (Sep 18–20) → Disney&#x27;s Grand Floridian (Sep 20–25)</div></div></div><div class="info-card"><div class="info-ico">✈️</div><div><div class="info-t">Flights</div><div class="info-d">Southwest BUAKTA · WN941 out 9/18 · WN2556 home 9/25</div></div></div><div class="info-card"><div class="info-ico">🚐</div><div><div class="info-t">Transport</div><div class="info-d">Tiffany Towncar airport transfers (2 car seats) · monorail, boat, Skyliner &amp; Minnie Vans on-property</div></div></div><div class="info-card"><div class="info-ico">🎢</div><div><div class="info-t">Park days</div><div class="info-d">4 parks + MNSSHP — one focused park per day, no back-to-back fatigue</div></div></div></div><h3 class="sub-h">Week at a Glance</h3><p class="hint">Tap any day to jump to its full timeline.</p><div class="wk-grid"><a class="wk-row four-seasons" href="#daily" data-day="1"><span class="wk-day">Day 1</span><span class="wk-date">Fri 9/18</span><span class="wk-hl">Arrival — Four Seasons pool</span><span class="wk-meal">In-resort dinner</span></a><a class="wk-row four-seasons" href="#daily" data-day="2"><span class="wk-day">Day 2</span><span class="wk-date">Sat 9/19</span><span class="wk-hl">Four Seasons Character Brunch + pool</span><span class="wk-meal">Character Brunch (A)</span></a><a class="wk-row mnsshp" href="#daily" data-day="3"><span class="wk-day">Day 3</span><span class="wk-date">Sun 9/20</span><span class="wk-hl">Transfer to GF → MNSSHP evening</span><span class="wk-meal">Crystal Palace (A)</span></a><a class="wk-row epcot" href="#daily" data-day="4"><span class="wk-day">Day 4</span><span class="wk-date">Mon 9/21</span><span class="wk-hl">EPCOT + grandparents arrive</span><span class="wk-meal">Topolino&#x27;s (S) · Citricos (S)</span></a><a class="wk-row animal-kingdom" href="#daily" data-day="5"><span class="wk-day">Day 5</span><span class="wk-date">Tue 9/22</span><span class="wk-hl">Animal Kingdom + Disney Springs</span><span class="wk-meal">Storybook Dining (S)</span></a><a class="wk-row princess" href="#daily" data-day="6"><span class="wk-day">Day 6</span><span class="wk-date">Wed 9/23</span><span class="wk-hl">Magic Kingdom — Princess Day ✨</span><span class="wk-meal">Cinderella&#x27;s Royal Table (A)</span></a><a class="wk-row hollywood" href="#daily" data-day="7"><span class="wk-day">Day 7</span><span class="wk-date">Thu 9/24</span><span class="wk-hl">Hollywood Studios — full group</span><span class="wk-meal">Hollywood &amp; Vine (B)</span></a><a class="wk-row departure" href="#daily" data-day="8"><span class="wk-day">Day 8</span><span class="wk-date">Fri 9/25</span><span class="wk-hl">Departure — leisurely morning</span><span class="wk-meal">Steakhouse 71 (A)</span></a></div><div class="legend"><span class="chip map">📍 Map</span> opens Google Maps · <span class="chip disney">🏰 Disney</span> opens the My Disney Experience app on your phone</div></section><section id="daily" class="view"><h2 class="sec-h">Daily Breakdown</h2><div class="day-tools"><button class="tool-btn" id="expand-all">Expand all</button><button class="tool-btn" id="collapse-all">Collapse all</button></div><article class="day-card four-seasons" id="day-1"><div class="day-top"><div class="day-badge">Day<br><b>1</b></div><div class="day-meta"><div class="day-date">Friday, September 18</div><div class="day-title">Arrival — Four Seasons Resort Orlando</div><div class="day-tag">Arrival</div></div></div><p class="day-head">Travel day. Land midday, settle in, low-key first night at the pool.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">9:15 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Fly to Orlando</span></div><div class="blk-desc">Southwest <b>WN941</b>: Nashville (BNA) 9:15 AM → Orlando (MCO) 12:10 PM. Confirmation <b>BUAKTA</b>.</div><div class="chips"><a class="chip ext" href="https://www.southwest.com/air/check-in/" target="_blank" rel="noopener">🔗 Flight status</a></div></div></div><div class="blk"><div class="blk-time">12:10 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Airport pickup</span></div><div class="blk-desc">Tiffany Towncar meets the family at MCO with two car seats (forward-facing for Casper, rear-facing for Eve) and drives straight to the Four Seasons.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Four%20Seasons%20Resort%20Orlando%20at%20Walt%20Disney%20World" target="_blank" rel="noopener">📍 Four Seasons Orlando</a></div></div></div><div class="blk"><div class="blk-time">Afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Check in & settle</span></div><div class="blk-desc">Check in and let the kids acclimate to Florida — no parks today.</div></div></div><div class="blk"><div class="blk-time">Evening</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Explorer Island waterpark</span></div><div class="blk-desc">Splash zones, kid pool, and lazy river. Low-key first night.</div></div></div><div class="blk"><div class="blk-time">Dinner</div><div class="blk-body"><div class="blk-head"><span class="blk-title">In-resort dinner</span></div><div class="blk-desc">Keep it simple after the travel day: Ravello (Italian), Plancha (Cuban poolside), or room service.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Ravello%20Four%20Seasons%20Orlando" target="_blank" rel="noopener">📍 Ravello</a></div></div></div></div></details></article><article class="day-card four-seasons" id="day-2"><div class="day-top"><div class="day-badge">Day<br><b>2</b></div><div class="day-meta"><div class="day-date">Saturday, September 19</div><div class="day-title">Four Seasons — Character Brunch + Pool Day</div><div class="day-tag">Four Seasons</div></div></div><p class="day-head">Character brunch in the morning, a full pool day, and an early night before parks begin.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">9:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Character Brunch ✔ Confirmed</span><span class="blk-tag">Confirmed</span></div><div class="blk-desc">Four Seasons Character Brunch — Goofy, Mickey, and Minnie visit tables; fresh food and PhotoPass included. Booked directly with the resort.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Four%20Seasons%20Resort%20Orlando%20at%20Walt%20Disney%20World" target="_blank" rel="noopener">📍 Four Seasons Orlando</a></div></div></div><div class="blk"><div class="blk-time">Afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Explorer Island pool day</span></div><div class="blk-desc">Waterpark, lazy river, splash pad, kid pools. Optional: Four Seasons kids' activities, nature trail, or spa time for the adults.</div></div></div><div class="blk"><div class="blk-time">Evening</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Early night</span></div><div class="blk-desc">Last relaxation day before parks begin. Early bedtime — Sunday is the hotel transfer + MNSSHP party night.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Capa%20Steakhouse%20Four%20Seasons%20Orlando" target="_blank" rel="noopener">📍 Capa Steakhouse</a></div></div></div></div></details></article><article class="day-card mnsshp" id="day-3"><div class="day-top"><div class="day-badge">Day<br><b>3</b></div><div class="day-meta"><div class="day-date">Sunday, September 20</div><div class="day-title">Transfer to Grand Floridian → MNSSHP (Core Family)</div><div class="day-tag">MNSSHP</div></div></div><p class="day-head">Move to the Grand Floridian, then Mickey&#x27;s Not-So-Scary Halloween Party — Brett, Ashley &amp; Casper (Eve free under 3).</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">By 11:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Check out & transfer</span></div><div class="blk-desc">Late breakfast at Four Seasons, then check out by 11. Tiffany Towncar (two car seats) → Grand Floridian. Bell services holds bags until the 3 PM check-in.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/resorts/grand-floridian-resort-and-spa/" target="_blank" rel="noopener">🏰 Grand Floridian</a><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Disney%27s%20Grand%20Floridian%20Resort%20and%20Spa" target="_blank" rel="noopener">📍 Map</a></div></div></div><div class="blk"><div class="blk-time">Early afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Light lunch & rest</span></div><div class="blk-desc">Quick lunch at Gasparilla Island Grill or the Beach Pool Bar. Quiet time, get Halloween costumes ready. Eve (2) is free under 3 and can stay in the stroller through the party.</div></div></div><div class="blk"><div class="blk-time">4:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Boat / monorail to Magic Kingdom</span></div><div class="blk-desc">Party wristband entry begins at 4:00 PM — head straight in and knock out a few short-wait rides before dinner.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/destinations/magic-kingdom/" target="_blank" rel="noopener">🏰 Magic Kingdom</a></div></div></div><div class="blk"><div class="blk-time">4–5 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Pre-party rides</span><span class="blk-tag">Rider Swap</span></div><div class="blk-desc">Short waits on regular attractions before the 7 PM party start: Space Mountain (Rider Swap), Big Thunder Mountain (Rider Swap), Pirates of the Caribbean, Haunted Mansion, Jungle Cruise.</div></div></div><div class="blk"><div class="blk-time">5:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Crystal Palace — pre-party dinner</span><span class="blk-tag">Book 7/22 · 5:00 PM</span></div><div class="blk-desc">A-Tier buffet with Winnie the Pooh, Tigger, Piglet & Eeyore — perfect for Eve and Casper. Eat before the 7 PM party officially starts.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Crystal%20Palace%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/crystal-palace/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">7 PM–Midnight</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Mickey's Not-So-Scary Halloween Party</span><span class="blk-tag">3 tickets ✔ purchased</span></div><div class="blk-desc">Trick-or-treat trails, the Boo-to-You Halloween Parade, Not-So-Spooky Spectacular fireworks, PhotoPass Magic Shots, and exclusive Halloween characters (Jack Skellington, the Disney Villains). Plan to leave ~10–10:30 PM if the kids fade. Boat or monorail back to GF.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-not-so-scary-halloween-party/" target="_blank" rel="noopener">🏰 Party info</a></div></div></div></div></details></article><article class="day-card epcot" id="day-4"><div class="day-top"><div class="day-badge">Day<br><b>4</b></div><div class="day-meta"><div class="day-date">Monday, September 21</div><div class="day-title">EPCOT (Core Family) → Barbara & Andy Arrive → Welcome Dinner</div><div class="day-tag">EPCOT</div></div></div><p class="day-head">A relaxed EPCOT day after the party, then the grandparents arrive for a welcome dinner at the Grand Floridian.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">Sleep in</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Late start</span></div><div class="blk-desc">Recovery morning after Sunday's MNSSHP — don't rope drop. Aim for the 8 AM Topolino's reservation but stay flexible.</div></div></div><div class="blk"><div class="blk-time">8:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Topolino's Terrace ★ Top booking priority</span><span class="blk-tag">Book 7/22 · #1</span></div><div class="blk-desc">S-Tier character breakfast at Riviera Resort — Mickey, Minnie, Donald & Daisy in artist outfits. The single hardest reservation on the trip — book first. Towncar/Minnie Van to Riviera, then walk to the Skyliner.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Topolino%27s%20Terrace%20Riviera%20Resort" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/riviera-resort/topolinos-terrace-flavors-of-the-riviera/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">~9:15 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Skyliner to EPCOT</span></div><div class="blk-desc">Riviera Skyliner → EPCOT International Gateway (direct, ~15 min). Enter through the back-door World Showcase entrance for shorter security lines.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/destinations/epcot/" target="_blank" rel="noopener">🏰 EPCOT</a></div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">EPCOT attractions</span><span class="blk-tag">Rider Swap</span></div><div class="blk-desc">Frozen Ever After (Norway), Remy's Ratatouille Adventure (France), Journey Into Imagination, The Seas with Nemo & Friends, Turtle Talk with Crush, Spaceship Earth. <b>Rider Swap:</b> Test Track, Soarin', Guardians of the Galaxy: Cosmic Rewind. Meet Anna & Elsa at Royal Sommerhus.</div></div></div><div class="blk"><div class="blk-time">12:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Garden Grill — character lunch</span><span class="blk-tag">Book 7/22 · 12:00 PM</span></div><div class="blk-desc">B-Tier rotating dining room over Living with the Land — Chip 'n Dale, Mickey, Pluto & Farmer Mickey. Easy to book, fits the late EPCOT start.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Garden%20Grill%20EPCOT%20The%20Land" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/epcot/garden-grill-restaurant/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">Afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">World Showcase grazing</span></div><div class="blk-desc">Graze the countries — Les Halles Boulangerie (France), Kringla (Norway), Yorkshire County Fish Shop (UK). Food & Wine Festival booths are likely active in late September.</div></div></div><div class="blk"><div class="blk-time">~4:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Return to Grand Floridian</span></div><div class="blk-desc">Monorail EPCOT → TTC → Resort Monorail to GF. Time it for Barbara & Andy's arrival (UA1643 lands MCO 12:59 PM, GF check-in ~3 PM).</div></div></div><div class="blk"><div class="blk-time">6:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Citricos — welcome dinner</span><span class="blk-tag">Book 7/22 · 6:30 PM</span></div><div class="blk-desc">S-Tier Mediterranean signature at the Grand Floridian — family-friendly but elevated for the grandparents' first night. Walking distance from the rooms. Toast their arrival.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Citricos%20Grand%20Floridian" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/grand-floridian-resort-and-spa/citricos/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div></div></details></article><article class="day-card animal-kingdom" id="day-5"><div class="day-top"><div class="day-badge">Day<br><b>5</b></div><div class="day-meta"><div class="day-date">Tuesday, September 22</div><div class="day-title">Animal Kingdom Morning → Disney Springs → Storybook Dining</div><div class="day-tag">Animal Kingdom</div></div></div><p class="day-head">Andy&#x27;s #1 / Barbara&#x27;s #2 park with the full group, then Disney Springs and an enchanted-forest dinner.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">Early AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Head to Animal Kingdom</span></div><div class="blk-desc">Early Minnie Van or Disney bus from GF in time for the Tusker House pre-rope-drop seating — be near the front when the park opens.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/destinations/animal-kingdom/" target="_blank" rel="noopener">🏰 Animal Kingdom</a></div></div></div><div class="blk"><div class="blk-time">8:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Tusker House — Donald's Dining Safari</span><span class="blk-tag">Book 7/22 · 8:00 AM</span></div><div class="blk-desc">S-Tier pre-park character breakfast — Donald, Daisy, Mickey & Goofy in safari gear. One of the best-value character meals at Disney World.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tusker%20House%20Restaurant%20Animal%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/animal-kingdom/tusker-house-restaurant/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Animal Kingdom rides</span><span class="blk-tag">Rider Swap</span></div><div class="blk-desc">Avatar Flight of Passage (Rider Swap), Kilimanjaro Safaris (best early when animals are active), Na'vi River Journey, Kali River Rapids (Rider Swap), It's Tough to be a Bug! <i>Note: DinoLand closed permanently Feb 2026 — DINOSAUR & TriceraTop Spin are gone.</i></div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Characters & exploring</span></div><div class="blk-desc">Mickey & Minnie in safari outfits at Adventurers Outpost, Moana meet-and-greet, Bluey & Bingo at Conservation Station. Wilderness Explorer badges for Casper. Pandora is arguably the best-themed land at WDW.</div></div></div><div class="blk"><div class="blk-time">1:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Tiffins — signature lunch</span><span class="blk-tag">Book 7/22 · 1:00 PM</span></div><div class="blk-desc">S-Tier hidden gem — bold global flavors, dining rooms decorated with Imagineer concept art. Easier to book than the headline character meals.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tiffins%20Restaurant%20Animal%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/animal-kingdom/tiffins/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">Afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Disney Springs</span></div><div class="blk-desc">Freshen up at GF (optional short rest), then to Disney Springs: World of Disney, the LEGO store, Marketplace Co-Op, and the Amphicars at The Boathouse. Optional: Fantasia Gardens mini golf if energy allows.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Disney%20Springs%20Orlando" target="_blank" rel="noopener">📍 Disney Springs</a></div></div></div><div class="blk"><div class="blk-time">6:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Storybook Dining at Artist Point</span><span class="blk-tag">Book 7/22 · 6:30 PM</span></div><div class="blk-desc">S-Tier — "best food of any character meal." Enchanted-forest setting at Wilderness Lodge with Snow White, Dopey, Grumpy & the Evil Queen. Minnie Van from Disney Springs.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Artist%20Point%20Wilderness%20Lodge" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/wilderness-lodge-resort/artist-point/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div></div></details></article><article class="day-card princess" id="day-6"><div class="day-top"><div class="day-badge">Day<br><b>6</b></div><div class="day-meta"><div class="day-date">Wednesday, September 23</div><div class="day-title">Magic Kingdom — PRINCESS DAY ✨ The Climax of the Trip</div><div class="day-tag">Magic Kingdom · Princess Day</div></div></div><p class="day-head">The only non-party MK day on the trip — BBB transformation, castle dinner, and Eve watching fireworks in her gown.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">7:30 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">1900 Park Fare — princess breakfast</span><span class="blk-tag">Book 7/22 · 7:30 AM</span></div><div class="blk-desc">Cinderella, Mirabel, Tiana & Aladdin character buffet at the Grand Floridian. Logistically perfect — sets the princess tone before the boat to MK.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=1900%20Park%20Fare%20Grand%20Floridian" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/grand-floridian-resort-and-spa/1900-park-fare/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">~9:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Boat to Magic Kingdom</span></div><div class="blk-desc">Walk to the Grand Floridian dock and take the boat to MK (~10 min).</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/destinations/magic-kingdom/" target="_blank" rel="noopener">🏰 Magic Kingdom</a></div></div></div><div class="blk"><div class="blk-time">10:00 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Bibbidi Bobbidi Boutique ★</span><span class="blk-tag">Book 7/22 · #2</span></div><div class="blk-desc">Eve gets the Princess Package (gown, hair, makeup, accessories); Casper gets the Knight Package (sword, shield, regalia). Inside the castle — a signature memory.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/shops/magic-kingdom/bibbidi-bobbidi-boutique-park/" target="_blank" rel="noopener">🏰 BBB info</a></div></div></div><div class="blk"><div class="blk-time">Late morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Fantasyland in costume</span><span class="blk-tag">Rider Swap</span></div><div class="blk-desc">It's a Small World, Dumbo, Prince Charming Carrousel, Peter Pan's Flight (Lightning Lane recommended), Winnie the Pooh, Under the Sea, Enchanted Tales with Belle (Eve & Casper get roles), Mad Tea Party. <b>Rider Swap:</b> Space Mountain, Seven Dwarfs Mine Train, Big Thunder.</div></div></div><div class="blk"><div class="blk-time">12:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Lunch — Skipper Canteen</span><span class="blk-tag">Book 7/22 · 12:30 PM</span></div><div class="blk-desc">S-Tier Jungle Cruise-themed hidden gem (not character dining). Alternative: Pinocchio Village Haus quick service, easier in a gown.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Jungle%20Navigation%20Co%20Skipper%20Canteen%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/jungle-navigation-skipper-canteen/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">~1:30–3:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Midday rest at GF</span></div><div class="blk-desc">Boat back to the Grand Floridian for ~2 hours of rest. Save energy for the long evening — castle dinner, fireworks, dessert party.</div></div></div><div class="blk"><div class="blk-time">5:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Cinderella's Royal Table ★</span><span class="blk-tag">Book 7/22 · #3</span></div><div class="blk-desc">A-Tier princess dinner inside Cinderella Castle. Eve dines with princesses in her BBB gown. One of the hardest tables on the trip.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Cinderella%27s%20Royal%20Table%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/cinderella-royal-table/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">8:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Happily Ever After Fireworks Dessert Party ★</span><span class="blk-tag">Book 7/22 · #4</span></div><div class="blk-desc">Tomorrowland Terrace dessert spread + reserved hub viewing for Happily Ever After — the visual climax of the trip. Eve in her gown watching fireworks. Boat back to GF ~9:45 PM.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/fireworks-dessert-party-seats/" target="_blank" rel="noopener">🏰 Dessert party</a></div></div></div></div></details></article><article class="day-card hollywood" id="day-7"><div class="day-top"><div class="day-badge">Day<br><b>7</b></div><div class="day-meta"><div class="day-date">Thursday, September 24</div><div class="day-title">Hollywood Studios — Full Group</div><div class="day-tag">Hollywood Studios</div></div></div><p class="day-head">Brett&#x27;s #1 park with the whole crew — Halloween breakfast, Toy Story Land, Galaxy&#x27;s Edge, and the headliners.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">Early AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Head to Hollywood Studios</span></div><div class="blk-desc">Minnie Van or Disney bus from GF (no monorail/Skyliner to HS). Arrive in time for the 8:15 AM breakfast.</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/destinations/hollywood-studios/" target="_blank" rel="noopener">🏰 Hollywood Studios</a></div></div></div><div class="blk"><div class="blk-time">8:15 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Hollywood & Vine — Minnie's Halloween</span><span class="blk-tag">Book 7/22 · 8:15 AM</span></div><div class="blk-desc">B-Tier seasonal breakfast — Mickey, Minnie, Donald, Daisy & Goofy in Halloween costumes. Exclusive September experience, pre-rope-drop seating.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hollywood%20and%20Vine%20Hollywood%20Studios" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/hollywood-studios/hollywood-and-vine/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Rides & lands</span><span class="blk-tag">Rider Swap</span></div><div class="blk-desc"><b>Toy Story Land:</b> Slinky Dog Dash (38" — Casper may ride), Toy Story Mania, Alien Swirling Saucers. <b>Galaxy's Edge:</b> Rise of the Resistance (Rider Swap), Millennium Falcon: Smugglers Run (Rider Swap). Mickey & Minnie's Runaway Railway. <b>Adults:</b> Rock 'n' Roller Coaster, Tower of Terror (Rider Swap).</div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Characters</span></div><div class="blk-desc">Buzz Lightyear, Woody & Jessie (Toy Story Land), Chewbacca & Grogu (Galaxy's Edge), Disney Junior characters at breakfast. <i>Note: MuppetVision, PizzeRizzo & Mama Melrose closed for Monsters Inc coaster construction.</i></div></div></div><div class="blk"><div class="blk-time">12:30 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Sci-Fi Dine-In Theater</span><span class="blk-tag">Book 7/22 · 12:30 PM</span></div><div class="blk-desc">A-Tier car-booth seating with B-movie clips on the drive-in screen. Request a car booth in the booking notes.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Sci-Fi%20Dine-In%20Theater%20Hollywood%20Studios" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/hollywood-studios/sci-fi-dine-in-theater/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">Afternoon</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Activities</span></div><div class="blk-desc">Olaf Draws! at the Animation Academy (Brett's wishlist), explore Galaxy's Edge, build a lightsaber at Savi's Workshop (optional, $$$).</div></div></div><div class="blk"><div class="blk-time">Evening</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Nighttime show</span><span class="blk-tag">Verify 30 days out</span></div><div class="blk-desc">Fantasmic! if running 9/24 (verify via the MDE app ~30 days out) or Wonderful World of Animation on the Chinese Theater. <i>Optional:</i> if Extended Evening Hours land at HS, a parent can solo-attend after the kids are asleep.</div></div></div></div></details></article><article class="day-card departure" id="day-8"><div class="day-top"><div class="day-badge">Day<br><b>8</b></div><div class="day-meta"><div class="day-date">Friday, September 25</div><div class="day-title">Departure Day</div><div class="day-tag">Departure</div></div></div><p class="day-head">Grandparents leave early; the Cohen family enjoys a leisurely morning before the afternoon flight home.</p><details class="day-details"><summary><span class="sum-open">▸ Show full timeline</span><span class="sum-close">▾ Hide timeline</span></summary><div class="timeline"><div class="blk"><div class="blk-time">~7:30 AM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Barbara & Andy depart</span></div><div class="blk-desc">UA2683 MCO 10:15 AM → ORD 12:21 PM. They leave GF by ~7:30 AM — say farewells the night before (no goodbye-breakfast window).</div></div></div><div class="blk"><div class="blk-time">Morning</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Leisurely Cohen morning</span></div><div class="blk-desc">No rush, no parks. Pack up, one last pool splash or walk on the grounds. Optional: Steakhouse 71 breakfast at the Contemporary (monorail-accessible) for one more Disney moment.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Steakhouse%2071%20Contemporary%20Resort" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/contemporary-resort/steakhouse-71/" target="_blank" rel="noopener">🏰 Reserve / Disney</a></div></div></div><div class="blk"><div class="blk-time">~12:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Airport transfer</span></div><div class="blk-desc">Check out. Tiffany Towncar (two car seats) → MCO around noon for a comfortable 90-minute buffer.</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Orlando%20International%20Airport%20MCO" target="_blank" rel="noopener">📍 MCO Airport</a></div></div></div><div class="blk"><div class="blk-time">3:00 PM</div><div class="blk-body"><div class="blk-head"><span class="blk-title">Fly home</span></div><div class="blk-desc">Southwest WN2556: MCO 3:00 PM → BNA 4:05 PM. Confirmation BUAKTA.</div></div></div></div></details></article></section><section id="dining" class="view"><h2 class="sec-h">Dining Guide</h2><p class="hint">13 reservations all booked in one session on <b>Jul 22 @ 6 AM ET</b> (★ = highest booking priority). Four Seasons brunch is already confirmed.</p><div class="tierkey">Tier: <span class="tier tier-S">S</span> can't-miss · <span class="tier tier-A">A</span> excellent · <span class="tier tier-B">B</span> good · <span class="tier tier-C">C</span> solid</div><div class="dine-list"><div class="dine-day">Sat · 9/19</div><div class="dine-card done"><div class="dine-time">9:00 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-A">A</span> Four Seasons Character Brunch</div><div class="dine-loc">Four Seasons</div><div class="dine-note">Goofy, Mickey &amp; Minnie · booked direct</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Four%20Seasons%20Resort%20Orlando" target="_blank" rel="noopener">📍 Map</a></div></div><div class="dine-prio done">Confirmed</div></div><div class="dine-day">Sun · 9/20</div><div class="dine-card "><div class="dine-time">5:00 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-A">A</span> Crystal Palace</div><div class="dine-loc">Magic Kingdom · Main St.</div><div class="dine-note">Pre-MNSSHP · Winnie the Pooh &amp; friends</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Crystal%20Palace%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/crystal-palace/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Priority</div></div><div class="dine-day">Mon · 9/21</div><div class="dine-card star"><div class="dine-time">8:00 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Topolino&#x27;s Terrace</div><div class="dine-loc">Riviera Resort</div><div class="dine-note">Book FIRST — Mickey &amp; friends in artist outfits</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Topolino%27s%20Terrace%20Riviera%20Resort" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/riviera-resort/topolinos-terrace-flavors-of-the-riviera/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio star">★ #1 hardest</div></div><div class="dine-card "><div class="dine-time">12:00 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-B">B</span> Garden Grill</div><div class="dine-loc">EPCOT · The Land</div><div class="dine-note">Chip &#x27;n Dale, Mickey, Farmer Mickey</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Garden%20Grill%20EPCOT" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/epcot/garden-grill-restaurant/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Standard</div></div><div class="dine-card "><div class="dine-time">6:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Citricos</div><div class="dine-loc">Grand Floridian</div><div class="dine-note">Welcome dinner for Barbara &amp; Andy</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Citricos%20Grand%20Floridian" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/grand-floridian-resort-and-spa/citricos/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Priority</div></div><div class="dine-day">Tue · 9/22</div><div class="dine-card "><div class="dine-time">8:00 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Tusker House</div><div class="dine-loc">Animal Kingdom · Africa</div><div class="dine-note">Donald&#x27;s Dining Safari · pre-rope drop</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tusker%20House%20Restaurant%20Animal%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/animal-kingdom/tusker-house-restaurant/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Priority</div></div><div class="dine-card "><div class="dine-time">1:00 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Tiffins</div><div class="dine-loc">Animal Kingdom · Discovery Is.</div><div class="dine-note">S-Tier signature lunch</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Tiffins%20Restaurant%20Animal%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/animal-kingdom/tiffins/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Priority</div></div><div class="dine-card star"><div class="dine-time">6:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Storybook Dining at Artist Point</div><div class="dine-loc">Wilderness Lodge</div><div class="dine-note">Snow White, dwarfs &amp; the Evil Queen</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Artist%20Point%20Wilderness%20Lodge" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/wilderness-lodge-resort/artist-point/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio star">★ very hard</div></div><div class="dine-day">Wed · 9/23</div><div class="dine-card "><div class="dine-time">7:30 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-C">C</span> 1900 Park Fare</div><div class="dine-loc">Grand Floridian</div><div class="dine-note">Princess Day kickoff at the resort</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=1900%20Park%20Fare%20Grand%20Floridian" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/grand-floridian-resort-and-spa/1900-park-fare/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Standard</div></div><div class="dine-card star"><div class="dine-time">10:00 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-none">·</span> Bibbidi Bobbidi Boutique</div><div class="dine-loc">Magic Kingdom · Castle</div><div class="dine-note">Eve Princess + Casper Knight package</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/shops/magic-kingdom/bibbidi-bobbidi-boutique-park/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio star">★ #2 critical</div></div><div class="dine-card "><div class="dine-time">12:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-S">S</span> Skipper Canteen</div><div class="dine-loc">Magic Kingdom · Adventureland</div><div class="dine-note">Best-kept secret (or Pinocchio Village Haus)</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Jungle%20Navigation%20Co%20Skipper%20Canteen%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/jungle-navigation-skipper-canteen/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Recommended</div></div><div class="dine-card star"><div class="dine-time">5:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-A">A</span> Cinderella&#x27;s Royal Table</div><div class="dine-loc">Magic Kingdom · Castle</div><div class="dine-note">THE princess moment — dine in the castle</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Cinderella%27s%20Royal%20Table%20Magic%20Kingdom" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/cinderella-royal-table/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio star">★ #3 critical</div></div><div class="dine-card star"><div class="dine-time">8:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-none">·</span> Happily Ever After Dessert Party</div><div class="dine-loc">Magic Kingdom · Tomorrowland</div><div class="dine-note">Reserved fireworks viewing + desserts</div><div class="chips"><a class="chip disney" href="https://disneyworld.disney.go.com/dining/magic-kingdom/fireworks-dessert-party-seats/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio star">★ #4 priority</div></div><div class="dine-day">Thu · 9/24</div><div class="dine-card "><div class="dine-time">8:15 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-B">B</span> Hollywood &amp; Vine</div><div class="dine-loc">Hollywood Studios</div><div class="dine-note">Minnie&#x27;s Seasonal Halloween costumes!</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Hollywood%20and%20Vine%20Hollywood%20Studios" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/hollywood-studios/hollywood-and-vine/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Standard</div></div><div class="dine-card "><div class="dine-time">12:30 PM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-A">A</span> Sci-Fi Dine-In Theater</div><div class="dine-loc">Hollywood Studios</div><div class="dine-note">Request a car booth in the notes</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Sci-Fi%20Dine-In%20Theater%20Hollywood%20Studios" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/hollywood-studios/sci-fi-dine-in-theater/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Standard</div></div><div class="dine-day">Fri · 9/25</div><div class="dine-card "><div class="dine-time">8:30 AM</div><div class="dine-main"><div class="dine-name"><span class="tier tier-A">A</span> Steakhouse 71 (optional)</div><div class="dine-loc">Contemporary Resort</div><div class="dine-note">Optional final-morning meal</div><div class="chips"><a class="chip map" href="https://www.google.com/maps/search/?api=1&amp;query=Steakhouse%2071%20Contemporary%20Resort" target="_blank" rel="noopener">📍 Map</a><a class="chip disney" href="https://disneyworld.disney.go.com/dining/contemporary-resort/steakhouse-71/" target="_blank" rel="noopener">🏰 Disney</a></div></div><div class="dine-prio ">Optional</div></div></div></section><section id="rider" class="view"><h2 class="sec-h">Rider Swap &amp; Heights</h2><p class="hint">Casper is ~40" (rides ✓ where marked) · Eve (2) is under the limits — she stays with a parent or grandparent. With Rider Swap, Brett &amp; Ashley take turns on thrill rides so no one waits twice.</p><div class="r-grid"><div class="r-card animal-kingdom"><div class="r-head"><b>Animal Kingdom</b><span>Tue 9/22</span></div><div class="r-rows"><div class="r-row"><span class="r-name">Avatar Flight of Passage</span><span class="r-h">44&quot;</span><span class="r-swap">Rider Swap</span><span class="cno">too tall for Casper</span></div><div class="r-row"><span class="r-name">Expedition Everest</span><span class="r-h">44&quot;</span><span class="r-swap">Rider Swap</span><span class="cno">too tall for Casper</span></div><div class="r-row"><span class="r-name">Kali River Rapids</span><span class="r-h">38&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Kilimanjaro Safaris</span><span class="r-h">Any</span><span class="r-swap">All ride</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Na&#x27;vi River Journey</span><span class="r-h">Any</span><span class="r-swap">All ride</span><span class="cok">Casper ✓</span></div></div></div><div class="r-card epcot"><div class="r-head"><b>EPCOT</b><span>Mon 9/21</span></div><div class="r-rows"><div class="r-row"><span class="r-name">Guardians: Cosmic Rewind</span><span class="r-h">42&quot;</span><span class="r-swap">Rider Swap</span><span class="cno">too tall for Casper</span></div><div class="r-row"><span class="r-name">Test Track</span><span class="r-h">40&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Soarin&#x27; Around the World</span><span class="r-h">40&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Frozen Ever After</span><span class="r-h">Any</span><span class="r-swap">All ride</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Remy&#x27;s Ratatouille</span><span class="r-h">Any</span><span class="r-swap">All ride</span><span class="cok">Casper ✓</span></div></div></div><div class="r-card princess"><div class="r-head"><b>Magic Kingdom</b><span>Wed 9/23</span></div><div class="r-rows"><div class="r-row"><span class="r-name">Space Mountain</span><span class="r-h">44&quot;</span><span class="r-swap">Rider Swap</span><span class="cno">too tall for Casper</span></div><div class="r-row"><span class="r-name">Big Thunder Mountain</span><span class="r-h">40&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Seven Dwarfs Mine Train</span><span class="r-h">38&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Peter Pan&#x27;s Flight</span><span class="r-h">Any</span><span class="r-swap">All ride · LL</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">It&#x27;s a Small World</span><span class="r-h">Any</span><span class="r-swap">All ride</span><span class="cok">Casper ✓</span></div></div></div><div class="r-card hollywood"><div class="r-head"><b>Hollywood Studios</b><span>Thu 9/24</span></div><div class="r-rows"><div class="r-row"><span class="r-name">Rock &#x27;n&#x27; Roller Coaster</span><span class="r-h">48&quot;</span><span class="r-swap">Adults</span><span class="cno">too tall for Casper</span></div><div class="r-row"><span class="r-name">Tower of Terror</span><span class="r-h">40&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Rise of the Resistance</span><span class="r-h">40&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Millennium Falcon</span><span class="r-h">38&quot;</span><span class="r-swap">Rider Swap</span><span class="cok">Casper ✓</span></div><div class="r-row"><span class="r-name">Slinky Dog Dash</span><span class="r-h">38&quot;</span><span class="r-swap">Casper may ride</span><span class="cok">Casper ✓</span></div></div></div></div></section><section id="booking" class="view"><h2 class="sec-h">Booking &amp; Key Dates</h2><div class="book-banner"><div class="bb-num" id="cd-book2">–</div><div>days until the <b>July 22 dining booking</b> · 6:00 AM ET<br><span class="bb-sub">Log in to My Disney Experience by 5:45 AM ET (4:45 AM CT)</span></div><a class="bb-cta" href="https://disneyworld.disney.go.com/dine-res/" target="_blank" rel="noopener">Open Disney dining ↗</a></div><h3 class="sub-h">Critical timeline</h3><div class="bk-list"><div class="bk-item done"><div class="bk-when">✔ Done</div><div class="bk-body"><div class="bk-label">Southwest flights — BUAKTA ($1,679.20)</div><div class="bk-detail">WN941 9/18 BNA 9:15A→MCO 12:10P · WN2556 9/25 MCO 3:00P→BNA 4:05P</div></div></div><div class="bk-item done"><div class="bk-when">✔ Done</div><div class="bk-body"><div class="bk-label">Four Seasons Character Brunch</div><div class="bk-detail">9/19 @ 9:00 AM — booked direct with the resort</div></div></div><div class="bk-item done"><div class="bk-when">✔ Done</div><div class="bk-body"><div class="bk-label">Barbara &amp; Andy flights (United)</div><div class="bk-detail">UA1643 9/21 ORD→MCO · UA2683 9/25 MCO→ORD</div></div></div><div class="bk-item done"><div class="bk-when">✔ Done</div><div class="bk-body"><div class="bk-label">MNSSHP party tickets</div><div class="bk-detail">3 tickets for Sun 9/20 (Brett, Ashley, Casper; Eve free under 3)</div></div></div><div class="bk-item now"><div class="bk-when">Apr–May 2026</div><div class="bk-body"><div class="bk-label">Resort &amp; car bookings</div><div class="bk-detail">Four Seasons 9/18–20 · Grand Floridian 9/20–25 (core) · GF 9/21–25 (B&amp;A) · Tiffany Towncar ×3 transfers</div></div></div><div class="bk-item now"><div class="bk-when">May 2026</div><div class="bk-body"><div class="bk-label">Park tickets</div><div class="bk-detail">Core family 4 days (9/21–24) · Barbara &amp; Andy 3 days (9/22–24). Link all 6 My Disney Experience accounts.</div></div></div><div class="bk-item now"><div class="bk-when">June 2026</div><div class="bk-body"><div class="bk-label">Prep items</div><div class="bk-detail">Research Lightning Lane strategy · order 2× noise-canceling headphones (Casper + Eve) · reserve double stroller · decide BBB gowns timing (recommend: save for 9/23).</div></div></div><div class="bk-item soon"><div class="bk-when">★ Jul 22, 2026 · 6:00 AM ET</div><div class="bk-body"><div class="bk-label">60-day dining window — ALL 13 reservations</div><div class="bk-detail">Single session. Log in by 5:45 AM ET. Book in priority order (below). Have backup times + alternates ready.</div></div></div><div class="bk-item future"><div class="bk-when">~Aug 23 (30 days out)</div><div class="bk-body"><div class="bk-label">Verify operational details</div><div class="bk-detail">Extended Evening Hours dates · Fantasmic! 9/24 showtime · Tree of Life Awakenings status · crowd levels · Hollywood &amp; Vine Halloween confirmed.</div></div></div><div class="bk-item future"><div class="bk-when">Sep 11, 2026 · 7:00 AM ET</div><div class="bk-body"><div class="bk-label">Lightning Lane Multi Pass</div><div class="bk-detail">Book 7 days before check-in. Day-specific strategy — prioritize Princess Day 9/23.</div></div></div><div class="bk-item future"><div class="bk-when">September 2026</div><div class="bk-body"><div class="bk-label">Final prep</div><div class="bk-detail">Grand Floridian online check-in · confirm Tiffany Towncar pickup times · pack Halloween costumes (BBB outfits stay home for the 9/23 reveal).</div></div></div></div><h3 class="sub-h">July 22 · 6 AM ET — book in this order</h3><p class="hint">Hardest reservations first. Your progress saves on this device. <span id="ck-progress">0 / 13 booked</span></p><div class="ck-list"><label class="ck"><input type="checkbox" data-ck="res1"><span class="ck-box"></span><span class="ck-num">1</span><span class="ck-main"><span class="tier tier-S">S</span> <b>Topolino&#x27;s Terrace</b><span class="ck-meta">Mon 9/21 · 8:00 AM — Hardest on the trip — book first</span></span></label><label class="ck"><input type="checkbox" data-ck="res2"><span class="ck-box"></span><span class="ck-num">2</span><span class="ck-main"><span class="tier tier-none">·</span> <b>Bibbidi Bobbidi Boutique</b><span class="ck-meta">Wed 9/23 · 10:00 AM — Eve Princess + Casper Knight</span></span></label><label class="ck"><input type="checkbox" data-ck="res3"><span class="ck-box"></span><span class="ck-num">3</span><span class="ck-main"><span class="tier tier-A">A</span> <b>Cinderella&#x27;s Royal Table</b><span class="ck-meta">Wed 9/23 · 5:30 PM — Book right after BBB</span></span></label><label class="ck"><input type="checkbox" data-ck="res4"><span class="ck-box"></span><span class="ck-num">4</span><span class="ck-main"><span class="tier tier-none">·</span> <b>Happily Ever After Dessert Party</b><span class="ck-meta">Wed 9/23 · 8:30 PM — Book alongside CRT</span></span></label><label class="ck"><input type="checkbox" data-ck="res5"><span class="ck-box"></span><span class="ck-num">5</span><span class="ck-main"><span class="tier tier-S">S</span> <b>Storybook Dining at Artist Point</b><span class="ck-meta">Tue 9/22 · 6:30 PM — S-Tier, very hard</span></span></label><label class="ck"><input type="checkbox" data-ck="res6"><span class="ck-box"></span><span class="ck-num">6</span><span class="ck-main"><span class="tier tier-S">S</span> <b>Tusker House</b><span class="ck-meta">Tue 9/22 · 8:00 AM — Pre-rope drop AK</span></span></label><label class="ck"><input type="checkbox" data-ck="res7"><span class="ck-box"></span><span class="ck-num">7</span><span class="ck-main"><span class="tier tier-S">S</span> <b>Tiffins</b><span class="ck-meta">Tue 9/22 · 1:00 PM — Signature lunch</span></span></label><label class="ck"><input type="checkbox" data-ck="res8"><span class="ck-box"></span><span class="ck-num">8</span><span class="ck-main"><span class="tier tier-A">A</span> <b>Crystal Palace</b><span class="ck-meta">Sun 9/20 · 5:00 PM — Pre-MNSSHP dinner</span></span></label><label class="ck"><input type="checkbox" data-ck="res9"><span class="ck-box"></span><span class="ck-num">9</span><span class="ck-main"><span class="tier tier-S">S</span> <b>Citricos</b><span class="ck-meta">Mon 9/21 · 6:30 PM — B&amp;A welcome dinner</span></span></label><label class="ck"><input type="checkbox" data-ck="res10"><span class="ck-box"></span><span class="ck-num">10</span><span class="ck-main"><span class="tier tier-B">B</span> <b>Hollywood &amp; Vine</b><span class="ck-meta">Thu 9/24 · 8:15 AM — Minnie&#x27;s Halloween</span></span></label><label class="ck"><input type="checkbox" data-ck="res11"><span class="ck-box"></span><span class="ck-num">11</span><span class="ck-main"><span class="tier tier-A">A</span> <b>Sci-Fi Dine-In Theater</b><span class="ck-meta">Thu 9/24 · 12:30 PM — Request car booth</span></span></label><label class="ck"><input type="checkbox" data-ck="res12"><span class="ck-box"></span><span class="ck-num">12</span><span class="ck-main"><span class="tier tier-C">C</span> <b>1900 Park Fare</b><span class="ck-meta">Wed 9/23 · 7:30 AM — Princess Day breakfast</span></span></label><label class="ck"><input type="checkbox" data-ck="res13"><span class="ck-box"></span><span class="ck-num">13</span><span class="ck-main"><span class="tier tier-B">B</span> <b>Garden Grill</b><span class="ck-meta">Mon 9/21 · 12:00 PM — EPCOT character lunch</span></span></label></div><div class="ll-note"><b>Then — Sep 11 @ 7 AM ET:</b> book Lightning Lane Multi Pass (7 days before check-in). Prioritize Princess Day 9/23. <a class="chip disney" href="https://disneyworld.disney.go.com/lightning-lane-passes/" target="_blank" rel="noopener">🏰 Lightning Lane</a></div></section></div></main><footer>Made with <span class="heart">♥</span> for Casper &amp; Eve's first Disney trip · Itinerary v6 · Always verify park hours, show times &amp; reservations in the My Disney Experience app closer to the date.</footer><script>
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tabs=[...document.querySelectorAll('.tab')];
+const views=[...document.querySelectorAll('.view')];
+function show(id){
+  views.forEach(v=>v.classList.toggle('active',v.id===id));
+  tabs.forEach(t=>{const on=t.dataset.target===id;t.classList.toggle('active',on);
+    if(on)t.setAttribute('aria-current','page');else t.removeAttribute('aria-current');});
+  history.replaceState(null,'','#'+id);
+  window.scrollTo({top:0,behavior:'instant' in window?'instant':'auto'});
+}
+tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.target)));
+
+// nicer collapse affordance: prepend a rotating chevron, drop the inline arrow glyphs
+document.querySelectorAll('#daily .day-details summary').forEach(s=>{
+  const o=s.querySelector('.sum-open'),c=s.querySelector('.sum-close');
+  if(o)o.textContent='Show full timeline';
+  if(c)c.textContent='Hide timeline';
+  const chev=document.createElement('span');chev.className='chev';chev.setAttribute('aria-hidden','true');chev.textContent='\u203A';
+  s.insertBefore(chev,s.firstChild);
+});
+
+// week-at-a-glance jump to a specific day
+document.querySelectorAll('.wk-row').forEach(r=>r.addEventListener('click',e=>{
+  e.preventDefault();show('daily');
+  const n=r.dataset.day;
+  setTimeout(()=>{const el=document.getElementById('day-'+n);
+    if(el){const d=el.querySelector('details');if(d)d.open=true;
+      el.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'});}},60);
+}));
+// expand / collapse all
+const dd=()=>document.querySelectorAll('#daily details');
+document.getElementById('expand-all').addEventListener('click',()=>dd().forEach(d=>d.open=true));
+document.getElementById('collapse-all').addEventListener('click',()=>dd().forEach(d=>d.open=false));
+
+// countdowns
+function days_to(iso){const now=new Date();const t=new Date(iso);
+  return Math.max(0,Math.ceil((t-now)/86400000));}
+function setCD(){
+  const b=days_to('2026-07-22T06:00:00-04:00');
+  const l=days_to('2026-09-11T07:00:00-04:00');
+  const tr=days_to('2026-09-18T00:00:00-04:00');
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  set('cd-book',b);set('cd-ll',l);set('cd-trip',tr);set('cd-book2',b);
+}
+setCD();setInterval(setCD,3600000);
+
+// checklist persistence (localStorage, guarded) + progress bar + sparkle
+const KEY='cohen-disney-2026-booking';
+let saved={};
+try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const boxes=[...document.querySelectorAll('input[data-ck]')];
+// inject a progress bar above the checklist
+let bar=null;
+const list=document.querySelector('.ck-list');
+if(list){bar=document.createElement('div');bar.className='ck-bar';
+  const fill=document.createElement('div');fill.className='ck-bar-fill';bar.appendChild(fill);
+  list.parentNode.insertBefore(bar,list);bar._fill=fill;}
+function prog(){const n=boxes.filter(b=>b.checked).length;
+  const p=document.getElementById('ck-progress');if(p)p.textContent=n+' / '+boxes.length+' booked';
+  if(bar)bar._fill.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+'%';}
+function sparkle(el){
+  if(RM)return;const r=el.getBoundingClientRect();
+  const cx=r.left+r.width/2,cy=r.top+r.height/2;
+  for(let i=0;i<7;i++){const s=document.createElement('span');s.className='spark';
+    const a=Math.random()*Math.PI*2,d=14+Math.random()*18;
+    s.style.left=cx+'px';s.style.top=cy+'px';
+    s.style.setProperty('--tx',(Math.cos(a)*d).toFixed(1)+'px');
+    s.style.setProperty('--ty',(Math.sin(a)*d).toFixed(1)+'px');
+    document.body.appendChild(s);setTimeout(()=>s.remove(),650);}
+}
+boxes.forEach(b=>{
+  if(saved[b.dataset.ck])b.checked=true;
+  b.addEventListener('change',()=>{saved[b.dataset.ck]=b.checked;
+    try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}prog();
+    if(b.checked)sparkle(b.nextElementSibling||b);});
+});
+prog();
+
+// open hash on load
+const h=location.hash.replace('#','');
+if(h&&document.getElementById(h)&&document.getElementById(h).classList.contains('view'))show(h);
+else show('overview');
+</script></body></html>
