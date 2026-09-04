@@ -2,7 +2,7 @@
 
 An interactive, mobile-friendly itinerary for our Walt Disney World trip, **September 18 to 25, 2026**.
 
-Working set **V10.5** (2026-09-04) — same plan, same facts, new scroll behaviour. V10 recorded the
+Working set **V10.6** (2026-09-04) — same plan, same facts, new scroll behaviour. V10 recorded the
 reservation confirmation numbers; two Wednesday 9/23 slots remain open.
 
 **Live site:** https://bc9033.github.io/DisneyTrip2026/ (repo `bc9033/DisneyTrip2026`, path case-sensitive)
@@ -52,7 +52,8 @@ the bottom of their frame. Every element holds full opacity throughout. The coun
 small "15 days to go" mark in the top bar so it is never lost, and the bar itself condenses.
 
 **Day schedules carry a timeline.** A thread runs down the schedule gutter with a dot for each block,
-and the block at the reading line lights up while the rest dim. The thread and dots are pure CSS
+and the block at the reading line is picked out with a soft wash. Nothing else dims - every block stays
+fully legible. The thread and dots are pure CSS
 pseudo-elements, so no schedule row carries extra markup. Princess Day (Thu 9/24) draws in rose,
 matching how that day is coloured everywhere else on the site.
 
@@ -97,7 +98,7 @@ sweep of every rendered text node on all four tabs.
 **Option B — command line**
 ```bash
 cd "Interactive Site"
-git init && git add . && git commit -m "Disney 2026 itinerary site V10.4"
+git init && git add . && git commit -m "Disney 2026 itinerary site V10.6"
 git branch -M main
 git remote add origin https://github.com/bc9033/DisneyTrip2026.git
 git push -u origin main
