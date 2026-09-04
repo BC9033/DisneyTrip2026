@@ -2,7 +2,7 @@
 
 An interactive, mobile-friendly itinerary for our Walt Disney World trip, **September 18 to 25, 2026**.
 
-Working set **V10.1** (2026-09-03) — same plan, same facts, redesigned presentation. V10 recorded the
+Working set **V10.2** (2026-09-03) — same plan, same facts, new scroll behaviour. V10 recorded the
 reservation confirmation numbers; two Wednesday 9/23 slots remain open.
 
 **Live site:** https://bc9033.github.io/DisneyTrip2026/ (repo `bc9033/DisneyTrip2026`, path case-sensitive)
@@ -43,11 +43,22 @@ retired from the front page.
   position down the Overview, with a progress line that fills as you go.
 
 ### Motion
-The Overview is scroll-aware. The hero settles in on load and the countdown numeral counts up; as you
-scroll, the numeral grows and fades while the castle drifts behind it, and the count hands off to a
-small "15 days to go" mark in the top bar so it is never lost. The bar itself condenses. Every section
-and its rows rise into place as they come into view, and the week's hairlines draw in beneath them.
-Switching day or tab replays the same entrance for that panel.
+The Overview is scroll-aware. The hero settles in on load and the countdown numeral counts up.
+
+**Nothing fades on scroll.** As you scroll the Overview, the hero *recedes* instead: the scene is four
+stacked layers that lag the scroll by different amounts — distant hills 0.34, mid bank 0.24, castle
+0.16, near bank 0.05, with the hero copy at 0.10 — so the bands separate with depth and sink out of
+the bottom of their frame. Every element holds full opacity throughout. The count still hands off to a
+small "15 days to go" mark in the top bar so it is never lost, and the bar itself condenses.
+
+**Day schedules carry a timeline.** A thread runs down the schedule gutter with a dot for each block.
+The block at the reading line lights up and the rest dim; a sticky "Up now" bar names it with its time
+and its place in the day — *4:00 PM · Cinderella's Royal Table · 7 / 8*. Princess Day (Thu 9/24) draws
+in rose, matching how that day is coloured everywhere else on the site. The thread and dots are pure
+CSS pseudo-elements, so no schedule row carries extra markup.
+
+Every section and its rows still rise into place as they come into view, and the week's hairlines draw
+in beneath them. Switching day or tab replays the same entrance for that panel.
 
 All of it is presentation only. With `prefers-reduced-motion: reduce`, with JavaScript off, or in the
 print view, every element is simply visible with no transforms — nothing depends on motion to be read.
@@ -76,7 +87,7 @@ sweep of every rendered text node on all four tabs.
 **Option B — command line**
 ```bash
 cd "Interactive Site"
-git init && git add . && git commit -m "Disney 2026 itinerary site V10.1"
+git init && git add . && git commit -m "Disney 2026 itinerary site V10.2"
 git branch -M main
 git remote add origin https://github.com/bc9033/DisneyTrip2026.git
 git push -u origin main

@@ -51,8 +51,9 @@ input[type=checkbox]{accent-color:var(--gold-text)}
 .js .daterule span.line{animation:drawRuleL .8s cubic-bezier(.2,.7,.2,1) .34s backwards}
 .daterule span.line:first-child{transform-origin:right}
 .daterule span.line:last-child{transform-origin:left}
-.cd{will-change:transform,opacity}
+.cd{will-change:transform}
 .scene{will-change:transform}
+.scene .sl{will-change:transform}
 
 /* ---------- nav ---------- */
 nav{position:sticky;top:0;z-index:50;background:rgba(250,246,237,.94);
@@ -133,7 +134,11 @@ h1{font-family:Gloock,Georgia,serif;font-size:clamp(40px,7vw,72px);line-height:1
 .cd .l{font-family:Poppins,'Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.2em;font-weight:500;
  text-transform:uppercase;color:#413B32;margin-top:14px}
 .cd .s{font-style:italic;color:var(--muted);margin-top:10px;font-size:17.5px}
-.scene{display:block;width:min(100%,980px);margin:24px auto 0}
+/* The hero scene is a clipped stage: the bands sink out of the bottom as
+   they lag the scroll, which is what reads as depth. */
+.scene{position:relative;display:block;width:min(100%,980px);margin:24px auto 0;
+ aspect-ratio:1200/260;overflow:hidden}
+.scene .sl{position:absolute;inset:0;width:100%;height:100%;display:block}
 
 /* ---------- now / next ---------- */
 .nownext{border-top:1px solid var(--gold-l);border-bottom:1px solid var(--gold-l);background:var(--panel)}
@@ -360,6 +365,61 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
  .dr .p{text-align:left}
 }
 
+/* ---------- day timeline track ---------- */
+/* Drawn with pseudo-elements: the thread is .sched::before, the drawn-so-far
+   fill is .sched::after driven by --track, and each block's dot is
+   .sr-t::before. No schedule row carries any new markup. */
+.sched{position:relative}
+.sr-t{position:relative}
+.sched::before,.sched::after{content:"";position:absolute;top:0;width:1px}
+.sched::before{bottom:0;background:var(--rule2)}
+.sched::after{height:var(--track,0%);background:var(--gold-t)}
+.day.princess .sched::after{background:var(--rose-d)}
+.sr-t::before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;
+ background:var(--bg);border:1px solid var(--gold-l);
+ transition:background .3s ease,border-color .3s ease,transform .3s ease}
+.day.princess .sr-t::before{border-color:var(--rose-b)}
+.js .sr.on>.sr-t::before{background:var(--gold-t);border-color:var(--gold-t);transform:scale(1.3)}
+.js .day.princess .sr.on>.sr-t::before{background:var(--rose-d);border-color:var(--rose-d)}
+/* Dimming is gated on .js so the schedule is fully readable with scripting off. */
+.js .sched .sr>.sr-t,.js .sched .sr>.sr-b{transition:opacity .3s ease}
+.js .sched .sr:not(.on)>.sr-t,.js .sched .sr:not(.on)>.sr-b{opacity:.45}
+@media (min-width:720px){
+ .sched::before,.sched::after{left:164px}
+ .sr-t::before{left:160px;top:20px}
+}
+@media (max-width:719px){
+ .sched{padding-left:26px}
+ .sched::before,.sched::after{left:4px}
+ .sr-t::before{left:-26px;top:20px}
+}
+/* ---------- up-now bar ---------- */
+.upnow{position:sticky;top:var(--navh,64px);z-index:40;display:flex;align-items:baseline;gap:14px;
+ padding:9px 20px;max-width:1040px;margin:0 auto;
+ background:rgba(250,246,237,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+ border-top:1.5px solid var(--gold-l);border-bottom:1px solid var(--rule)}
+body[data-day="7"] .upnow{border-top-color:var(--rose-d)}
+.upnow .k{font-family:Poppins,'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:.2em;
+ text-transform:uppercase;color:var(--gold-text);flex:none}
+body[data-day="7"] .upnow .k{color:var(--rose-s)}
+.upnow .t{font-family:Poppins,'Helvetica Neue',Arial,sans-serif;font-size:12.5px;letter-spacing:.06em;
+ font-weight:500;color:var(--gold-t);flex:none}
+body[data-day="7"] .upnow .t{color:var(--rose-d)}
+.upnow .i{font-size:17.5px;color:var(--ink);font-weight:600;min-width:0;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.upnow .o{margin-left:auto;font-family:Poppins,'Helvetica Neue',Arial,sans-serif;font-size:10.5px;
+ letter-spacing:.14em;color:var(--label);flex:none}
+@media (max-width:719px){
+ /* Two tight lines, not three: the "Up now" label goes - the bar's job is
+    obvious - and every line-height is pinned so the sticky chrome above a
+    phone schedule stays near 50px rather than 80. */
+ .upnow{gap:0 10px;flex-wrap:wrap;padding:7px 20px 8px}
+ .upnow .k{display:none}
+ .upnow .t{font-size:11.5px;line-height:1.2}
+ .upnow .o{font-size:10px;line-height:1.2}
+ .upnow .i{flex-basis:100%;font-size:16px;line-height:1.3;margin-top:1px}
+}
+
 /* ---------- print keepsake ---------- */
 @media print{
  body{background:#fff}
@@ -374,7 +434,9 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
  .rv,.js .rv{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
  .hero-a{animation:none!important}
  a.wk-row::after{transform:none!important}
- .cd,.scene,.hero .eyebrow,.hero .sub,.hero .meta,.hero .daterule{opacity:1!important;transform:none!important;transition:none!important}
+ .cd,.scene,.scene .sl,.hero .eyebrow,.hero .sub,.hero .meta,.hero .daterule{opacity:1!important;transform:none!important;transition:none!important}
+ .sched::before,.sched::after,.sr-t::before{display:none!important}
+ .sched{padding-left:0!important}
  .nav-cd{display:none!important}
 }
 @media (prefers-reduced-motion:reduce){
@@ -382,7 +444,8 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
  /* nothing may depend on motion to become visible */
  .rv,.js .rv{opacity:1!important;transform:none!important}
  a.wk-row::after{transform:none!important}
- .cd,.scene{transform:none!important;opacity:1!important}
+ .cd,.scene,.scene .sl,.hero .seal,.hero h1{transform:none!important;opacity:1!important}
+ .sched .sr>.sr-t,.sched .sr>.sr-b{opacity:1!important}
 }
 </style>
 </head>
@@ -410,9 +473,10 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
 <div class="daterule hero-a"><span class="line"></span><span class="t">Sep 18 to 25, 2026</span><span class="line"></span></div>
 <p class="meta hero-a">Four Seasons Resort Orlando &nbsp;&middot;&nbsp; Disney&rsquo;s Grand Floridian Resort &amp; Spa<br>Brett &amp; Ashley &nbsp;&middot;&nbsp; Casper (4) &nbsp;&middot;&nbsp; Evie (2) &nbsp;&middot;&nbsp; <span class="gp">Grandma Barbara &amp; Grandpa Andy (Sep 21 to 25)</span></p>
 <div class="cd hero-a" id="cd"><span class="e" id="cd-eyebrow">Counting down</span><span class="n" id="cd-num">&nbsp;</span><span class="l" id="cd-label">days until wheels up</span><span class="s" id="cd-sub">Friday, September 18 &middot; Southwest WN941 departs Nashville 9:15 AM CT</span></div>
-<svg class="scene hero-a" id="scene" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
-<path d="M0,196 Q230,156 470,184 T940,176 T1200,182 L1200,260 L0,260 Z" fill="#E8E2CE"></path>
-<path d="M0,222 Q300,192 620,216 T1200,210 L1200,260 L0,260 Z" fill="#DDD6BE"></path>
+<div class="scene hero-a" id="scene" aria-hidden="true">
+<svg class="sl" id="sl-far" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false"><path d="M0,196 Q230,156 470,184 T940,176 T1200,182 L1200,260 L0,260 Z" fill="#E8E2CE"></path></svg>
+<svg class="sl" id="sl-mid" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false"><path d="M0,222 Q300,192 620,216 T1200,210 L1200,260 L0,260 Z" fill="#DDD6BE"></path></svg>
+<svg class="sl" id="sl-castle" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
 <g transform="translate(600,-40)">
 <g fill="#F4EDDB"><rect x="-150" y="178" width="20" height="92"></rect><rect x="130" y="178" width="20" height="92"></rect><rect x="-104" y="150" width="32" height="120"></rect><rect x="72" y="150" width="32" height="120"></rect><rect x="-58" y="166" width="116" height="104"></rect><rect x="-24" y="92" width="48" height="178"></rect></g>
 <g fill="#E6DCC2"><rect x="0" y="92" width="24" height="178"></rect><rect x="88" y="150" width="16" height="120"></rect><rect x="124" y="178" width="26" height="92"></rect><rect x="8" y="166" width="50" height="104"></rect></g>
@@ -423,9 +487,9 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
 <g fill="#BC6B7C"><polygon points="-140,130 -122,135 -140,140"></polygon><polygon points="140,130 158,135 140,140"></polygon><polygon points="-88,86 -68,92 -88,98"></polygon><polygon points="88,86 108,92 88,98"></polygon><polygon points="0,14 22,20 0,26"></polygon></g>
 <g fill="#A98B4F"><rect x="-5" y="116" width="10" height="22" rx="5"></rect><rect x="-92" y="172" width="8" height="14" rx="4"></rect><rect x="80" y="172" width="8" height="14" rx="4"></rect><rect x="-138" y="196" width="7" height="12" rx="3.5"></rect><rect x="131" y="196" width="7" height="12" rx="3.5"></rect></g>
 <path d="M-16,270 -16,210 A16,18 0 0 1 16,210 L16,270 Z" fill="#8A6D3B"></path>
-</g>
-<path d="M0,242 Q280,220 600,238 T1200,232 L1200,260 L0,260 Z" fill="#CFC8AE"></path>
-</svg>
+</g></svg>
+<svg class="sl" id="sl-near" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false"><path d="M0,242 Q280,220 600,238 T1200,232 L1200,260 L0,260 Z" fill="#CFC8AE"></path></svg>
+</div>
 </header>
 <div class="nownext"><div class="in"><div class="c"><span class="k" id="now-k">Status</span><span class="v"><span id="now-v">Every reservation is booked.</span><i id="now-i"> Two Wednesday meals remain open.</i></span></div><div class="c"><span class="k">Next</span><span class="v"><span id="next-v">&nbsp;</span><i id="next-i"></i></span></div></div></div>
 <div class="wrap">
@@ -478,6 +542,7 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
 <button type="button" data-day="7" data-short="Thu Sep 24"><span class="w">Thu</span><span class="n">24</span></button>
 <button type="button" data-day="8" data-short="Fri Sep 25"><span class="w">Fri</span><span class="n">25</span></button>
 </div>
+<div class="upnow" id="upnow" data-noprint hidden><span class="k">Up now</span><span class="t" id="upnow-t"></span><span class="i" id="upnow-i"></span><span class="o" id="upnow-o"></span></div>
 <article class="day" id="day-1" data-date="Friday, September 18" data-park="Four Seasons" data-title="Arrival - Four Seasons Resort Orlando"><div class="day-head rv"><span class="day-num"><span class="dn-mo">Sep</span>18</span><div class="b"><p class="day-eyebrow">Friday, September 18 &middot; Four Seasons</p><h2>Arrival - Four Seasons Resort Orlando</h2><p class="day-summary">Travel day. Land midday, settle in, low-key first night at the pool.</p></div></div><div class="day-rule"></div><div class="sched"><div class="sr" data-t="2026-09-18T09:15:00-04:00" data-dayn="1"><div class="sr-t rv">9:15 AM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Fly to Orlando</span></div><p class="sr-d">Southwest <b>WN941</b>: Nashville (BNA) 9:15 AM → Orlando (MCO) 12:10 PM. Confirmation <b>BUAKTA</b>.</p><div class="chips"><a href="https://www.southwest.com/air/check-in/" target="_blank" rel="noopener">Flight status &#8599;</a></div></div></div><div class="sr" data-t="2026-09-18T12:10:00-04:00" data-dayn="1"><div class="sr-t rv">12:10 PM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Airport pickup</span></div><p class="sr-d">Tiffany Towncar meets the family at MCO with two car seats (forward-facing for Casper, rear-facing for Evie) and drives straight to the Four Seasons.</p><div class="chips"><a href="https://www.google.com/maps/search/?api=1&amp;query=Four%20Seasons%20Resort%20Orlando%20at%20Walt%20Disney%20World" target="_blank" rel="noopener">Four Seasons Orlando &#8599;</a></div></div></div><div class="sr" data-dayn="1"><div class="sr-t rv">Afternoon</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Check in &amp; settle</span></div><p class="sr-d">Check in and let the kids acclimate to Florida - no parks today.</p></div></div><div class="sr" data-dayn="1"><div class="sr-t rv">Evening</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Explorer Island waterpark</span></div><p class="sr-d">Splash zones, kid pool, and lazy river. Low-key first night.</p></div></div><div class="sr" data-dayn="1"><div class="sr-t rv">Dinner</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">In-resort dinner</span></div><p class="sr-d">Keep it simple after the travel day: Ravello (Italian), Plancha (Cuban poolside), or room service.</p><div class="chips"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ravello%20Four%20Seasons%20Orlando" target="_blank" rel="noopener">Ravello &#8599;</a></div></div></div></div></article>
 <article class="day" id="day-2" data-date="Saturday, September 19" data-park="Four Seasons" data-title="Four Seasons - Character Brunch + Pool Day"><div class="day-head rv"><span class="day-num"><span class="dn-mo">Sep</span>19</span><div class="b"><p class="day-eyebrow">Saturday, September 19 &middot; Four Seasons</p><h2>Four Seasons - Character Brunch + Pool Day</h2><p class="day-summary">Character brunch in the morning, a full pool day, and an early night before parks begin.</p></div></div><div class="day-rule"></div><div class="sched"><div class="sr" data-t="2026-09-19T09:00:00-04:00" data-dayn="2"><div class="sr-t rv">9:00 AM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Character Brunch</span><span class="tag">Confirmed</span></div><p class="sr-d">Four Seasons Character Brunch - Goofy, Mickey, and Minnie visit tables; fresh food and PhotoPass included. Booked directly with the resort.</p><div class="chips"><a href="https://www.google.com/maps/search/?api=1&amp;query=Four%20Seasons%20Resort%20Orlando%20at%20Walt%20Disney%20World" target="_blank" rel="noopener">Four Seasons Orlando &#8599;</a></div></div></div><div class="sr" data-dayn="2"><div class="sr-t rv">Afternoon</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Explorer Island pool day</span></div><p class="sr-d">Waterpark, lazy river, splash pad, kid pools. Optional: Four Seasons kids' activities, nature trail, or spa time for the adults.</p></div></div><div class="sr" data-dayn="2"><div class="sr-t rv">Evening</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Early night</span></div><p class="sr-d">Last relaxation day before parks begin. Early bedtime - Sunday is the hotel transfer + MNSSHP party night.</p><div class="chips"><a href="https://www.google.com/maps/search/?api=1&amp;query=Capa%20Steakhouse%20Four%20Seasons%20Orlando" target="_blank" rel="noopener">Capa Steakhouse &#8599;</a></div></div></div></div></article>
 <article class="day" id="day-3" data-date="Sunday, September 20" data-park="Halloween Party" data-title="Transfer to Grand Floridian → MNSSHP (Core Family)"><div class="day-head rv"><span class="day-num"><span class="dn-mo">Sep</span>20</span><div class="b"><p class="day-eyebrow">Sunday, September 20 &middot; Halloween Party</p><h2>Transfer to Grand Floridian → MNSSHP (Core Family)</h2><p class="day-summary">Move to the Grand Floridian, then Mickey's Not-So-Scary Halloween Party - Brett, Ashley &amp; Casper (Evie free under 3).</p></div></div><div class="day-rule"></div><div class="sched"><div class="sr" data-t="2026-09-20T11:00:00-04:00" data-dayn="3"><div class="sr-t rv">By 11:00 AM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Check out &amp; transfer</span></div><p class="sr-d">Late breakfast at Four Seasons, then check out by 11. Tiffany Towncar (two car seats) → Grand Floridian. Bell services holds bags until the 3 PM check-in.</p><div class="chips"><a href="https://disneyworld.disney.go.com/resorts/grand-floridian-resort-and-spa/" target="_blank" rel="noopener">Grand Floridian &#8599;</a><a href="https://www.google.com/maps/search/?api=1&amp;query=Disney%27s%20Grand%20Floridian%20Resort%20and%20Spa" target="_blank" rel="noopener">Map &#8599;</a></div></div></div><div class="sr" data-dayn="3"><div class="sr-t rv">Early afternoon</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Light lunch &amp; rest</span></div><p class="sr-d">Quick lunch at Gasparilla Island Grill or the Beach Pool Bar. Quiet time, get Halloween costumes ready. Evie (2) is free under 3 and can stay in the stroller through the party.</p></div></div><div class="sr" data-t="2026-09-20T16:00:00-04:00" data-dayn="3"><div class="sr-t rv">4:00 PM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Boat / monorail to Magic Kingdom</span></div><p class="sr-d">Party wristband entry begins at 4:00 PM - head straight in and knock out a few short-wait rides before dinner.</p><div class="chips"><a href="https://disneyworld.disney.go.com/destinations/magic-kingdom/" target="_blank" rel="noopener">Magic Kingdom &#8599;</a></div></div></div><div class="sr" data-t="2026-09-20T16:00:00-04:00" data-dayn="3"><div class="sr-t rv">4–5 PM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Pre-party rides</span><span class="tag">Rider Swap</span></div><p class="sr-d">Short waits on regular attractions before the 7 PM party start: Space Mountain (Rider Swap; 44" minimum, Casper is right at the line so measure day-of; Evie waits), Big Thunder Mountain (reopened May 2026 with a new 38" minimum, so the whole family rides with margin for Evie), Pirates of the Caribbean, Haunted Mansion, Jungle Cruise.</p></div></div><div class="sr" data-t="2026-09-20T17:00:00-04:00" data-dayn="3"><div class="sr-t rv">5:00 PM</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Be Our Guest - pre-party dinner</span><span class="tag">Booked · 5:00 PM</span></div><p class="sr-d">B-Tier prix-fixe inside Beast's Castle (Grand Ballroom &amp; West Wing). The Beast appears for photos - not a character meal. Party guests are seated from 4 PM, so eat before the 7 PM party. <i>V7: replaces Crystal Palace.</i></p><div class="chips"><a href="https://www.google.com/maps/search/?api=1&amp;query=Be%20Our%20Guest%20Restaurant%20Magic%20Kingdom" target="_blank" rel="noopener">Map &#8599;</a><a href="https://disneyworld.disney.go.com/dining/magic-kingdom/be-our-guest-restaurant/" target="_blank" rel="noopener">Reserve / Disney &#8599;</a></div></div></div><div class="sr" data-t="2026-09-20T19:00:00-04:00" data-dayn="3"><div class="sr-t rv">7 PM–Midnight</div><div class="sr-b rv"><div class="sr-h"><span class="sr-title">Mickey's Not-So-Scary Halloween Party</span><span class="tag">3 tickets purchased</span></div><p class="sr-d">Trick-or-treat trails, the Boo-to-You Halloween Parade, Not-So-Spooky Spectacular fireworks, PhotoPass Magic Shots, and exclusive Halloween characters (Jack Skellington, the Disney Villains). Plan to leave ~10–10:30 PM if the kids fade. Boat or monorail back to GF.</p><div class="chips"><a href="https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-not-so-scary-halloween-party/" target="_blank" rel="noopener">Party info &#8599;</a></div></div></div></div></article>
@@ -555,7 +620,7 @@ footer .acts a,footer .acts button{border:0;background:none;cursor:pointer;
 </div>
 </div>
 </section>
-<footer><div class="rule"><span class="l"></span><span class="t">The Cohen Family &middot; Walt Disney World</span><span class="l"></span></div><p class="v">Itinerary v10.1 &middot; September 2026 &middot; Times in Orlando local (ET)</p><div class="acts" data-noprint><button type="button" onclick="window.print()">Print keepsake</button><a href="console.html">Booking console &#8599;</a><a href="https://disneyworld.disney.go.com/plan/" target="_blank" rel="noopener">My Disney Experience &#8599;</a></div></footer>
+<footer><div class="rule"><span class="l"></span><span class="t">The Cohen Family &middot; Walt Disney World</span><span class="l"></span></div><p class="v">Itinerary v10.2 &middot; September 2026 &middot; Times in Orlando local (ET)</p><div class="acts" data-noprint><button type="button" onclick="window.print()">Print keepsake</button><a href="console.html">Booking console &#8599;</a><a href="https://disneyworld.disney.go.com/plan/" target="_blank" rel="noopener">My Disney Experience &#8599;</a></div></footer>
 <script>
 (function(){
 'use strict';
@@ -602,7 +667,8 @@ function setTab(id, push){
   if (id === 'overview'){ heroParallax(0); }
   armReveals();
   if (id === 'days') playDay(+document.body.getAttribute('data-day') || 1);
-  onScroll();
+  syncNavH();
+onScroll();
 }
 $$('.nav-tabs button').forEach(function(b){
   b.addEventListener('click', function(){ setTab(b.getAttribute('data-tab')); });
@@ -711,19 +777,64 @@ var RAIL = $$('.rail a');
 var heroEls = null;
 function heroParallax(y){
   if (reduce) return;
-  if (!heroEls) heroEls = { cd: $('#cd'), scene: $('#scene'), chip: $('#nav-cd'),
-                            fade: $$('.hero .eyebrow, .hero .sub, .hero .meta, .hero .daterule') };
+  if (!heroEls) heroEls = { chip: $('#nav-cd'), scene: $('#scene'),
+                            copy: $$('.hero .eyebrow, .hero .seal, .hero h1, .hero .sub, .hero .daterule, .hero .meta, .hero .cd'),
+                            bands: [[$('#sl-far'), 0.34], [$('#sl-mid'), 0.24],
+                                    [$('#sl-castle'), 0.16], [$('#sl-near'), 0.05]] };
   var span = Math.max(320, window.innerHeight * 0.62);
   var t = Math.min(1, Math.max(0, y / span));          /* 0 at rest, 1 scrolled past */
-  var ease = t * t;                                     /* hold, then let go */
-  if (heroEls.cd){
-    heroEls.cd.style.transform = 'scale(' + (1 + 0.34 * ease) + ')';
-    heroEls.cd.style.opacity = String(Math.max(0, 1 - 1.25 * ease));
-  }
-  if (heroEls.scene) heroEls.scene.style.transform = 'translate3d(0,' + (y * 0.22) + 'px,0)';
-  heroEls.fade.forEach(function(el){ el.style.opacity = String(Math.max(0, 1 - 1.7 * t)); });
+  /* Depth, not dissolve. Nothing changes opacity: each layer simply lags the
+     scroll by its own amount, so the distant bands hold while the near bank
+     runs, and the hero recedes out of the frame under its own steam. */
+  heroEls.copy.forEach(function(el){ el.style.transform = 'translate3d(0,' + (y * 0.10) + 'px,0)'; });
+  heroEls.bands.forEach(function(p){
+    if (p[0]) p[0].style.transform = 'translate3d(0,' + (y * p[1]) + 'px,0)';
+  });
   /* the countdown does not just vanish — it hands off to the top bar */
   if (heroEls.chip) heroEls.chip.classList.toggle('show', t > 0.55);
+}
+
+/* Day timeline. .sr is display:contents and has no box, so all geometry is read
+   from .sr-b and mapped back to its parent row. */
+var upnowEls = null;
+function dayTrack(){
+  if (reduce) return;
+  if (!upnowEls) upnowEls = { bar: $('#upnow'), t: $('#upnow-t'),
+                              i: $('#upnow-i'), o: $('#upnow-o') };
+  var art = document.getElementById('day-' + (document.body.getAttribute('data-day') || '1'));
+  var sched = art && art.querySelector('.sched');
+  var cells = sched ? $$('.sr-b', sched) : [];
+  if (!cells.length){ if (upnowEls.bar) upnowEls.bar.hidden = true; return; }
+  var line = window.innerHeight * 0.36;
+  var box = sched.getBoundingClientRect();
+  var inView = box.top < line && box.bottom > 90;
+  if (upnowEls.bar) upnowEls.bar.hidden = !inView;
+  var best = null, bi = 0, bd = Infinity;
+  cells.forEach(function(el, i){
+    var r = el.getBoundingClientRect();
+    var d = Math.abs((r.top + r.height / 2) - line);
+    if (d < bd){ bd = d; best = el; bi = i; }
+  });
+  cells.forEach(function(el){
+    if (el.parentNode) el.parentNode.classList.toggle('on', el === best && inView);
+  });
+  sched.style.setProperty('--track',
+    Math.max(0, Math.min(100, (line - box.top) / Math.max(1, box.height) * 100)) + '%');
+  if (best && inView){
+    var tm = best.parentNode.querySelector('.sr-t');
+    var ti = best.querySelector('.sr-title');
+    if (upnowEls.t && tm) upnowEls.t.textContent = tm.textContent;
+    if (upnowEls.i && ti) upnowEls.i.textContent = ti.textContent;
+    if (upnowEls.o) upnowEls.o.textContent = (bi + 1) + ' / ' + cells.length;
+  }
+}
+
+/* The nav's height is set by its content, changes at breakpoints and
+   shrinks when .scrolled lands, so anything pinned beneath it has to
+   measure rather than assume. */
+function syncNavH(){
+  var nav = $('nav');
+  if (nav) document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
 }
 
 function onScroll(){
@@ -731,8 +842,13 @@ function onScroll(){
   var y = window.scrollY;
   var pct = max > 0 ? Math.min(100, Math.round(y / max * 1000) / 10) : 0;
   var bar = $('#progress'); if (bar) bar.style.width = pct + '%';
+  var wasScrolled = document.body.classList.contains('scrolled');
   document.body.classList.toggle('scrolled', y > 40);
-  if (document.body.getAttribute('data-tab') === 'overview') heroParallax(y);
+  if (wasScrolled !== (y > 40)){ syncNavH(); setTimeout(syncNavH, 320); }
+  var tab = document.body.getAttribute('data-tab');
+  if (tab === 'overview') heroParallax(y);
+  if (tab === 'days') dayTrack();
+  else if (upnowEls && upnowEls.bar) upnowEls.bar.hidden = true;
   var rf = $('#rail-fill');
   if (rf){
     var secs = RAIL.map(function(a){ return document.getElementById(a.getAttribute('data-sec')); }).filter(Boolean);
@@ -757,7 +873,7 @@ function onScrollRaf(){
   requestAnimationFrame(function(){ ticking = false; onScroll(); });
 }
 window.addEventListener('scroll', onScrollRaf, {passive:true});
-window.addEventListener('resize', function(){ heroEls = null; onScroll(); }, {passive:true});
+window.addEventListener('resize', function(){ heroEls = null; syncNavH(); onScroll(); }, {passive:true});
 RAIL.forEach(function(a){
   a.addEventListener('click', function(e){
     e.preventDefault();
@@ -915,6 +1031,7 @@ tick();
 setInterval(tick, 60000);
 armReveals();
 playDay(d0);
+syncNavH();
 onScroll();
 })();
 </script>
