@@ -2,7 +2,7 @@
 
 An interactive, mobile-friendly itinerary for our Walt Disney World trip, **September 18 to 25, 2026**.
 
-Working set **V10.2** (2026-09-03) — same plan, same facts, new scroll behaviour. V10 recorded the
+Working set **V10.4** (2026-09-03) — same plan, same facts, new scroll behaviour. V10 recorded the
 reservation confirmation numbers; two Wednesday 9/23 slots remain open.
 
 **Live site:** https://bc9033.github.io/DisneyTrip2026/ (repo `bc9033/DisneyTrip2026`, path case-sensitive)
@@ -51,14 +51,24 @@ stacked layers that lag the scroll by different amounts — distant hills 0.34, 
 the bottom of their frame. Every element holds full opacity throughout. The count still hands off to a
 small "15 days to go" mark in the top bar so it is never lost, and the bar itself condenses.
 
-**Day schedules carry a timeline.** A thread runs down the schedule gutter with a dot for each block.
-The block at the reading line lights up and the rest dim; a sticky "Up now" bar names it with its time
-and its place in the day — *4:00 PM · Cinderella's Royal Table · 7 / 8*. Princess Day (Thu 9/24) draws
-in rose, matching how that day is coloured everywhere else on the site. The thread and dots are pure
-CSS pseudo-elements, so no schedule row carries extra markup.
+**Day schedules carry a timeline.** A thread runs down the schedule gutter with a dot for each block,
+and the block at the reading line lights up while the rest dim. The thread and dots are pure CSS
+pseudo-elements, so no schedule row carries extra markup. Princess Day (Thu 9/24) draws in rose,
+matching how that day is coloured everywhere else on the site.
 
-Every section and its rows still rise into place as they come into view, and the week's hairlines draw
-in beneath them. Switching day or tab replays the same entrance for that panel.
+**The "Up now" bar is a day-of instrument.** It appears only when you are actually living the day on
+screen — Days tab open, today's date matching the day being viewed, page scrolled past the top, and
+the day's first block already passed. It then follows the *clock*, not your scrolling, naming the
+block happening right now from the schedule's own timestamps and refreshing every 60 seconds. So it
+is invisible before 9/18 by design; append `?upnow=preview` to the URL to force it on for a look.
+
+**Each panel settles once, then stops.** Rows no longer appear as you scroll into them — that made the
+page feel like it was still loading while you read it. Instead a panel plays one orchestrated entrance
+when you open it (staggered 26ms per row, capped at 620ms) and is then finished moving. Switching tab
+or day replays that panel's entrance. Nothing at all is scroll-triggered.
+
+Only elements actually on screen animate, so a block hidden by a breakpoint — the phone week at desktop
+width, or the desktop week on a phone — is never left mid-animation.
 
 All of it is presentation only. With `prefers-reduced-motion: reduce`, with JavaScript off, or in the
 print view, every element is simply visible with no transforms — nothing depends on motion to be read.
@@ -87,7 +97,7 @@ sweep of every rendered text node on all four tabs.
 **Option B — command line**
 ```bash
 cd "Interactive Site"
-git init && git add . && git commit -m "Disney 2026 itinerary site V10.2"
+git init && git add . && git commit -m "Disney 2026 itinerary site V10.4"
 git branch -M main
 git remote add origin https://github.com/bc9033/DisneyTrip2026.git
 git push -u origin main

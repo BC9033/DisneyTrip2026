@@ -33,11 +33,12 @@ input[type=checkbox]{accent-color:var(--gold-text)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes drawRuleL{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-/* Reveal-on-scroll. The hidden state is applied only once JS is running, so the
-   page is fully readable with scripting off or if anything throws. */
-.rv{transition:opacity .65s cubic-bezier(.2,.6,.2,1),transform .65s cubic-bezier(.2,.6,.2,1)}
-.js .rv{opacity:0;transform:translateY(16px)}
-.js .rv.in{opacity:1;transform:none}
+/* Panel entrance. Each panel settles once and is then finished moving; nothing
+   is revealed by scrolling. .rv deliberately carries NO hidden state - the
+   animation is purely additive - so with JS off, under reduced motion, in print,
+   or if anything throws, every element is simply visible. */
+@keyframes settle{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.js .rv.settling{animation:settle .5s cubic-bezier(.2,.6,.2,1) backwards}
 /* Hero entrance, then hero parallax (JS writes inline transforms afterwards;
    fill-mode backwards hands control back once the entrance finishes). */
 .js .hero-a{animation:riseIn .75s cubic-bezier(.2,.6,.2,1) backwards}
@@ -620,7 +621,7 @@ body[data-day="7"] .upnow .t{color:var(--rose-d)}
 </div>
 </div>
 </section>
-<footer><div class="rule"><span class="l"></span><span class="t">The Cohen Family &middot; Walt Disney World</span><span class="l"></span></div><p class="v">Itinerary v10.2 &middot; September 2026 &middot; Times in Orlando local (ET)</p><div class="acts" data-noprint><button type="button" onclick="window.print()">Print keepsake</button><a href="console.html">Booking console &#8599;</a><a href="https://disneyworld.disney.go.com/plan/" target="_blank" rel="noopener">My Disney Experience &#8599;</a></div></footer>
+<footer><div class="rule"><span class="l"></span><span class="t">The Cohen Family &middot; Walt Disney World</span><span class="l"></span></div><p class="v">Itinerary v10.4 &middot; September 2026 &middot; Times in Orlando local (ET)</p><div class="acts" data-noprint><button type="button" onclick="window.print()">Print keepsake</button><a href="console.html">Booking console &#8599;</a><a href="https://disneyworld.disney.go.com/plan/" target="_blank" rel="noopener">My Disney Experience &#8599;</a></div></footer>
 <script>
 (function(){
 'use strict';
@@ -712,64 +713,44 @@ $$('.cal-btn').forEach(function(b){
   });
 });
 
-/* ---------------- reveal on scroll ---------------- */
-/* Everything below is presentation only. With reduced motion, or with JS off,
-   every element stays fully visible and nothing here runs. */
-var io = null;
-function markIn(el, delay){
-  el.style.transitionDelay = (delay || 0) + 'ms';
-  el.classList.add('in');
-}
-if (!reduce && 'IntersectionObserver' in window){
-  io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      io.unobserve(el);
-      markIn(el, +(el.dataset.rvDelay || 0));
-    });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-} 
-/* group siblings so they arrive in a stagger rather than all at once */
-function group(sel, step, cap){
-  var last = null, i = 0;
-  $$(sel).forEach(function(el){
-    var p = el.parentNode;
-    if (p !== last){ last = p; i = 0; }
-    el.dataset.rvDelay = String(Math.min(i * (step || 45), cap || 320));
-    i++;
+/* ---------------- panel entrance ---------------- */
+/* One orchestrated settle per panel, then the page stops moving. Presentation
+   only: with reduced motion or JS off, none of this runs and every element is
+   already visible, because .rv has no hidden state of its own. */
+var SETTLE_STEP = 26, SETTLE_CAP = 620;
+
+function settle(items){
+  if (reduce) return;
+  /* Only animate what is actually on screen. A breakpoint-hidden element (the
+     phone week at desktop width, or vice versa) cannot run an animation while
+     it is display:none, and `backwards` fill would pin it at opacity 0 - so it
+     is left alone at its natural, visible state. */
+  items = items.filter(function(el){ return el && el.offsetParent !== null; });
+  if (!items.length) return;
+  items.forEach(function(el){
+    el.classList.remove('settling');
+    el.style.animationDelay = '';
+  });
+  void items[0].offsetWidth;                     /* restart rather than queue */
+  items.forEach(function(el, i){
+    el.style.animationDelay = Math.min(i * SETTLE_STEP, SETTLE_CAP) + 'ms';
+    el.classList.add('settling');
   });
 }
+
+/* Only the panel on screen settles. The other tabs' rows sit behind
+   display:none, and would otherwise burn their entrance before you saw them. */
 function armReveals(){
-  if (!io){ $$('.rv').forEach(function(el){ el.classList.add('in'); }); return; }
-  group('.week-wide .wk-row', 40, 360);
-  group('.week-compact .cal-item', 40, 360);
-  group('.info .cell', 55, 300);
-  group('#todo-list .todo-row', 60, 300);
-  group('.dgroup .dr', 55, 260);
-  group('.riders .rblock', 90, 300);
-  $$('.rv').forEach(function(el){
-    if (el.classList.contains('in')) return;
-    io.observe(el);
-  });
+  var tab = document.body.getAttribute('data-tab') || 'overview';
+  if (tab === 'days') return;                    /* setTab calls playDay for that */
+  var panel = document.getElementById(tab);
+  if (panel) settle($$('.rv', panel));
 }
-/* Days shows one day at a time, so its rows are already on screen when you
-   switch. Replay the stagger instead of waiting for an intersection. */
+
+/* Days shows one day at a time, so switching day replays that day's settle. */
 function playDay(n){
   var art = document.getElementById('day-' + n);
-  if (!art) return;
-  var items = [art.querySelector('.day-head')].concat($$('.sr', art).map(function(sr){
-    return [$('.sr-t', sr), $('.sr-b', sr)];
-  }).reduce(function(a, b){ return a.concat(b); }, []));
-  items.forEach(function(el){ if (el){ el.classList.remove('in'); el.style.transitionDelay = '0ms'; } });
-  if (!io){ items.forEach(function(el){ if (el) el.classList.add('in'); }); return; }
-  void art.offsetWidth;
-  var step = 0;
-  items.forEach(function(el, k){
-    if (!el) return;
-    if (k > 0 && k % 2 === 1) step++;              /* one step per schedule row */
-    markIn(el, Math.min((k === 0 ? 0 : 60 + step * 55), 620));
-  });
+  if (art) settle($$('.rv', art));
 }
 
 /* ---------------- scroll rail + progress ---------------- */
@@ -808,25 +789,55 @@ function dayTrack(){
   var line = window.innerHeight * 0.36;
   var box = sched.getBoundingClientRect();
   var inView = box.top < line && box.bottom > 90;
-  if (upnowEls.bar) upnowEls.bar.hidden = !inView;
-  var best = null, bi = 0, bd = Infinity;
-  cells.forEach(function(el, i){
+  var best = null, bd = Infinity;
+  cells.forEach(function(el){
     var r = el.getBoundingClientRect();
     var d = Math.abs((r.top + r.height / 2) - line);
-    if (d < bd){ bd = d; best = el; bi = i; }
+    if (d < bd){ bd = d; best = el; }
   });
   cells.forEach(function(el){
     if (el.parentNode) el.parentNode.classList.toggle('on', el === best && inView);
   });
   sched.style.setProperty('--track',
     Math.max(0, Math.min(100, (line - box.top) / Math.max(1, box.height) * 100)) + '%');
-  if (best && inView){
-    var tm = best.parentNode.querySelector('.sr-t');
-    var ti = best.querySelector('.sr-title');
-    if (upnowEls.t && tm) upnowEls.t.textContent = tm.textContent;
-    if (upnowEls.i && ti) upnowEls.i.textContent = ti.textContent;
-    if (upnowEls.o) upnowEls.o.textContent = (bi + 1) + ' / ' + cells.length;
+  upNow();
+}
+
+/* The Up-now bar is a day-of instrument, not a scroll indicator: it appears
+   only while you are actually living the day it describes, and it follows the
+   clock rather than the reading line. Off at the top of the page, off on every
+   other day, off before the day's first block. ?upnow=preview forces it on. */
+function upNow(){
+  if (!upnowEls) upnowEls = { bar: $('#upnow'), t: $('#upnow-t'),
+                              i: $('#upnow-i'), o: $('#upnow-o') };
+  var bar = upnowEls.bar;
+  if (!bar) return;
+  var preview = /[?&]upnow=preview/.test(location.search);
+  var viewing = parseInt(document.body.getAttribute('data-day') || '1', 10);
+  if (document.body.getAttribute('data-tab') !== 'days' || window.scrollY <= 120){
+    bar.hidden = true; return;
   }
+  var now = new Date();
+  var inTrip = now >= TRIP_START && now < TRIP_END;
+  var tripDay = inTrip ? Math.min(8, Math.floor((now - TRIP_START)/86400000) + 1) : null;
+  if (!preview && tripDay !== viewing){ bar.hidden = true; return; }
+
+  var art = document.getElementById('day-' + viewing);
+  var rows = art ? $$('.sr', art) : [];
+  var cur = null, idx = -1;
+  rows.forEach(function(el, i){
+    var t = el.getAttribute('data-t');
+    if (t && new Date(t) <= now){ cur = el; idx = i; }
+  });
+  if (!cur && preview){ cur = rows[0] || null; idx = 0; }
+  if (!cur){ bar.hidden = true; return; }   /* the day has not started yet */
+
+  var tm = cur.querySelector('.sr-t');
+  var ti = cur.querySelector('.sr-title');
+  if (upnowEls.t && tm) upnowEls.t.textContent = tm.textContent;
+  if (upnowEls.i && ti) upnowEls.i.textContent = ti.textContent;
+  if (upnowEls.o) upnowEls.o.textContent = (idx + 1) + ' / ' + rows.length;
+  bar.hidden = false;
 }
 
 /* The nav's height is set by its content, changes at breakpoints and
@@ -849,6 +860,7 @@ function onScroll(){
   if (tab === 'overview') heroParallax(y);
   if (tab === 'days') dayTrack();
   else if (upnowEls && upnowEls.bar) upnowEls.bar.hidden = true;
+  else if (!upnowEls && $('#upnow')) $('#upnow').hidden = true;
   var rf = $('#rail-fill');
   if (rf){
     var secs = RAIL.map(function(a){ return document.getElementById(a.getAttribute('data-sec')); }).filter(Boolean);
@@ -1028,7 +1040,7 @@ setDay(d0);
 window.scrollTo(0,0);
 renderPack();
 tick();
-setInterval(tick, 60000);
+setInterval(function(){ tick(); upNow(); }, 60000);
 armReveals();
 playDay(d0);
 syncNavH();
