@@ -19,10 +19,12 @@ retired from the front page.
 
 - **Overview** — a clock-aware hero countdown, a Now/Next strip, the week at a glance, trip particulars,
   what is still to do, and a packing checklist
-- **Days** — one day at a time, chosen from an eight-day selector, with the full hour-by-hour schedule
-- **Dining** — every reservation with tier, time, location and confirmation number. As of the 2026-09-03
-  audit: 11 confirmed, plus the Four Seasons brunch confirmed hotel-direct; Hollywood & Vine and
-  Sci-Fi Dine-In (both Wed 9/23) are OPEN with no confirmation on file
+- **Days** — one day at a time, chosen by calendar date (Fri 18 through Fri 25), with the full
+  hour-by-hour schedule
+- **Dining** — every reservation with time, location and confirmation number. Tap the restaurant name
+  to open its official Disney page, which launches My Disney Experience on a phone that has it. As of
+  the 2026-09-03 audit: 11 confirmed, plus the Four Seasons brunch confirmed hotel-direct; Hollywood &
+  Vine and Sci-Fi Dine-In (both Wed 9/23) are OPEN with no confirmation on file
 - **Rider Swap** — height minimums by park for Casper (~44") and Evie (~40"), heights as of 2026-06-23;
   exact-threshold rides are measure-day-of
 
@@ -38,7 +40,23 @@ retired from the front page.
 - **Print keepsake** (footer) prints all four tabs and all eight days on a white ground, without the
   navigation, day selector or checklist.
 - On a phone the week becomes a tap-to-open accordion; on a wide screen a section rail tracks your
-  position down the Overview.
+  position down the Overview, with a progress line that fills as you go.
+
+### Motion
+The Overview is scroll-aware. The hero settles in on load and the countdown numeral counts up; as you
+scroll, the numeral grows and fades while the castle drifts behind it, and the count hands off to a
+small "15 days to go" mark in the top bar so it is never lost. The bar itself condenses. Every section
+and its rows rise into place as they come into view, and the week's hairlines draw in beneath them.
+Switching day or tab replays the same entrance for that panel.
+
+All of it is presentation only. With `prefers-reduced-motion: reduce`, with JavaScript off, or in the
+print view, every element is simply visible with no transforms — nothing depends on motion to be read.
+
+### Readability
+Set for reading at arm's length. Body text is 18px, headings and labels are larger and heavier, and
+every text colour clears the WCAG AA 4.5:1 contrast bar against the cream ground — the pale golds are
+kept for hairlines and borders only, with darker golds carrying the words. Verified by an automated
+sweep of every rendered text node on all four tabs.
 
 ### Links
 - **Map** links open **Google Maps** (and the Maps app on a phone).
