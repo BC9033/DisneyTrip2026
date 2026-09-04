@@ -2,7 +2,7 @@
 
 An interactive, mobile-friendly itinerary for our Walt Disney World trip, **September 18 to 25, 2026**.
 
-Working set **V10.4** (2026-09-03) — same plan, same facts, new scroll behaviour. V10 recorded the
+Working set **V10.5** (2026-09-04) — same plan, same facts, new scroll behaviour. V10 recorded the
 reservation confirmation numbers; two Wednesday 9/23 slots remain open.
 
 **Live site:** https://bc9033.github.io/DisneyTrip2026/ (repo `bc9033/DisneyTrip2026`, path case-sensitive)
@@ -23,8 +23,8 @@ retired from the front page.
   hour-by-hour schedule
 - **Dining** — every reservation with time, location and confirmation number. Tap the restaurant name
   to open its official Disney page, which launches My Disney Experience on a phone that has it. As of
-  the 2026-09-03 audit: 11 confirmed, plus the Four Seasons brunch confirmed hotel-direct; Hollywood &
-  Vine and Sci-Fi Dine-In (both Wed 9/23) are OPEN with no confirmation on file
+  the 2026-09-04 audit: 12 confirmed, plus the Four Seasons brunch confirmed hotel-direct; only Hollywood &
+  Vine (Wed 9/23) is still OPEN. Sci-Fi Dine-In was booked on Ashley's account, so its number is pending
 - **Rider Swap** — height minimums by park for Casper (~44") and Evie (~40"), heights as of 2026-06-23;
   exact-threshold rides are measure-day-of
 
